@@ -27,7 +27,7 @@ class EditXml:
     it = self.__xml
     
     for i in range(len(tag)):
-      for el in it..iterfind(tags[i]):
+      for el in it.iterfind(tags[i]):
         print(el.text)
     # for tag in self.__xml.iterfind(tags[0]):
     #   print(tag.text)
