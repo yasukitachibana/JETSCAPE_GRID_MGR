@@ -24,7 +24,7 @@ class EditXml:
     return self.__xml
 
   def EditParams(self,xpath,val):
-    self.__xml.findtext(xpath)
+    self.__xml.findall(xpath)
     # for tag in self.__xml.iterfind(tags[0]):
     #   print(tag.text)
 
