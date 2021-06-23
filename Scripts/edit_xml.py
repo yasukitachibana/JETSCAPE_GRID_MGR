@@ -28,7 +28,6 @@ class EditXml:
       self.AddElement(xpath)
       element = self.__xml.find(xpath)
     element.text = val
-    #self.__xml.write('test_out.xml',encoding='UTF-8' )
 
   def AddElement(self,xpath):
     path_list = xpath.split('/')
