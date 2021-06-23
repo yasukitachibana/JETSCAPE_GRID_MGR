@@ -19,13 +19,13 @@ class EditXml:
 
   def ReadXml(self, xml_filename):
     self.__xml = ET.parse(xml_filename)
-    print(self.__xml)
 
   def Xml(self):
     return self.__xml
 
   def EditParams(tags,val):
-      pass
+    print(self.__xml)
+    pass
     
 #     tag_module = GetTag(module_name)
 #     match = re.search(tag_module,copy)
