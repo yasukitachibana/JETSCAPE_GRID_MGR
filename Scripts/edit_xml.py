@@ -26,7 +26,7 @@ class EditXml:
   def EditParams(self,tags,val):
     it = self.__xml
     
-    for i in range(len(tag)):
+    for i in range(len(tags)):
       for el in it.iterfind(tags[i]):
         print(el.text)
     # for tag in self.__xml.iterfind(tags[0]):
