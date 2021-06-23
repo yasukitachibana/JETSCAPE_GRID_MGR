@@ -6,7 +6,9 @@ import xml.etree.ElementTree as ET
 def SetXml(i_bin,run):
     con = configs.SetConfigurations()
     print('run '+str(run))
-
+    original_xml = con.OriginalXml()
+    tree = ET.parse(original_xml)
+    print(tree)
 
 
 def GetParams(argc,argvs):

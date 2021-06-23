@@ -7,7 +7,7 @@ CodePath:
   '/wsu/tmp/YasukiAAPaper/JETSCAPE-COMP'
 
 OriginalUserXml:
-  PbPb:
+  AA:
     'config/jetscape_user_pbpb_grid.xml'
   PP:
     'config/jetscape_user_PP19.xml'

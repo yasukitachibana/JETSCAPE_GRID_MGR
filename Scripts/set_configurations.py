@@ -11,6 +11,9 @@ class SetConfigurations:
   __i_bin_max = 0
   __pt_hat_bins = []
   __script_dir = ''
+  __output_dir = ''
+  __code_path = ''
+  __original_xml = ''
 
   def __init__(self):
     pass
@@ -28,25 +31,27 @@ class SetConfigurations:
       self.__yaml_data = yaml.safe_load(ymlf)
     self.SetParameters(params)
 
-  def SetParameters(self,params):
-    self.SetRunTotal()
-    self.SetPtHatBins(params['hard'],params['eCM'])
+  def SetParameters(self,params): 
 
-  def SetPtHatBins(self, hard, ecm):
-    self.__pt_hat_bins = self.__yaml_data['pthat'][hard][ecm]
+    self.__output_dir = self.__yaml_data['OutputDirPath']
+    self.__code_path = self.__yaml_data['CodePath']
+    self.__original_xml = os.path.join(self.__code_path, self.__yaml_data['OriginalUserXml'][params['system']])
+    self.__run_total = self.__yaml_data['run']     
+    self.__pt_hat_bins = self.__yaml_data['pthat'][params['hard']][params['eCM']]
     self.__i_bin_max = len(self.__pt_hat_bins)
 
-    #print(self.__pt_hat_bins)
 
-  def SetRunTotal(self):
-    self.__run_total = self.__yaml_data['run']
+
+
+########################################################################
+  def OriginalXml(self):
+    return self.__original_xml
 
   def RunTotal(self):
     return self.__run_total
 
   def ScriptDir(self):
     return self.__script_dir
-
 
   def IbinMax(self):
     return self.__i_bin_max
