@@ -24,7 +24,8 @@ class EditXml:
   def Xml(self):
     return self.__xml
 
-# def EditXmlParam(module_name,copy,tag,val):
+  def EditParams(tags,val):
+      pass
     
 #     tag_module = GetTag(module_name)
 #     match = re.search(tag_module,copy)
