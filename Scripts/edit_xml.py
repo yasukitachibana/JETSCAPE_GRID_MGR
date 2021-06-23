@@ -23,18 +23,14 @@ class EditXml:
     return self.__xml
 
   def EditParams(self,xpath,val):
-
     element = self.__xml.find(xpath)    
-    if not element == None:
-      element.text = val
-    else:
+    if element == None:
       self.AddElement(xpath)
       element = self.__xml.find(xpath)
-      element.text = val
-    self.__xml.write('test_out.xml',encoding='UTF-8' )
+    element.text = val
+    #self.__xml.write('test_out.xml',encoding='UTF-8' )
 
   def AddElement(self,xpath):
-
     path_list = xpath.split('/')
     path = path_list[0]
     parent = self.__xml
@@ -45,3 +41,11 @@ class EditXml:
       element = self.__xml.find(path)
       if element == None:
         element = ET.SubElement(parent, path_list[i])
+
+  def DeleteElement(self,xpath):
+    parent = self.__xml.find(os.path.dirname(xpath))
+    element = self.__xml.find(xpath)
+    parent.remove(element)
+
+  def PrintXml(self,filename):
+    self.__xml.write(filename,encoding='UTF-8')
