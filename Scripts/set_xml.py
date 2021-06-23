@@ -1,21 +1,12 @@
-import os
-import sys
 import set_configurations as configs
-import single_run
+import sys
+import os
+import xml.etree.ElementTree as ET
 
+def SetXml(i_bin,run):
+    con = configs.SetConfigurations()
+    print('run '+str(run))
 
-def Main(params):
-  print('Main')
-  con = configs.SetConfigurations()
-  con.InitConfigs(os.getcwd(), '../Config/config.yaml', params)
-
-  i_bin_start = params['start']
-  i_bin_end = min(params['end'], con.IbinMax())
-
-  for i_bin in range(i_bin_start, i_bin_end):
-    run_total = con.RunTotal()
-    for run in range(0,run_total):
-      single_run.Run(i_bin,run)
 
 
 def GetParams(argc,argvs):
@@ -24,19 +15,19 @@ def GetParams(argc,argvs):
 
   if argc < 2:
     print('Please Input Options')
-    print('\t$python main_submission.py AA [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py AA [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [quename]')
     print('Please Input Options')
-    print('\t$python main_submission.py PP [eCM] [centrality (e.g. 0-5)] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PP [eCM] [centrality (e.g. 0-5)] [PythiaGun/PGun] [bin_start] [quename]')
     exit()
   
-  if argvs[1] == 'PP' and argc < 8:
+  if argvs[1] == 'PP' and argc < 7:
     print('Please Input Options')
-    print('\t$python main_submission.py PP [eCM] [centrality (e.g. 0-5)] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PP [eCM] [centrality (e.g. 0-5)] [PythiaGun/PGun] [bin_start] [quename]')
     exit()
 
-  if argvs[1] != 'PP' and argc < 11:
+  if argvs[1] != 'PP' and argc < 10:
     print('Please Input Options')
-    print('\t$python main_submission.py AA [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py AA [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [quename]')
     exit()
 
   print( '##################')
@@ -63,13 +54,12 @@ def GetParams(argc,argvs):
     q_s = float(argvs[5])
     recoil = int(argvs[6])
 
-  print( 'Hard Process:', argvs[-4])
-  print( 'bin:', argvs[-3], '-', argvs[-2])
+  print( 'Hard Process:', argvs[-3])
+  print( 'bin:', argvs[-2])
   print( 'que:', argvs[-1])  
   
-  hard = argvs[-4]
-  i_bin_start = int(argvs[-3])
-  i_bin_end = int(argvs[-2])
+  hard = argvs[-3]
+  i_bin_start = int(argvs[-2])
   que = argvs[-1]
   print( '##################')
   print( '##################')
@@ -83,7 +73,7 @@ def GetParams(argc,argvs):
     'recoil': recoil,
     'hard': hard,
     'start': i_bin_start,
-    'end': i_bin_end,
+    'end': i_bin_start+1,
     'que': que
   }
   #print(params)
@@ -93,4 +83,9 @@ if __name__ == '__main__':
   argvs = sys.argv
   argc = len(argvs)
   params = GetParams(argc, argvs)
-  Main(params)
+  con = configs.SetConfigurations()
+  con.InitConfigs(os.getcwd(), '../Config/config.yaml', params)
+  SetXml(params['start'],0)
+
+
+
