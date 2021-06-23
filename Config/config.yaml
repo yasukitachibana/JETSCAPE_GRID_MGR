@@ -4,8 +4,9 @@ OutputDirPath:
   '/wsu/tmp/YasukiAAPaper'
 
 CodePath:
-  '/wsu/tmp/YasukiAAPaper/JETSCAPE-COMP'
-
+  #'/wsu/tmp/YasukiAAPaper/JETSCAPE-COMP'
+  '../../JETSCAPE'
+  
 OriginalUserXml:
   AA:
     'config/jetscape_user_pbpb_grid.xml'

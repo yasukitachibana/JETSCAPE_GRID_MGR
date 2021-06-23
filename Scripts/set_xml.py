@@ -12,9 +12,9 @@ def SetXml(i_bin,run):
 
 def SetXmlGeneral(i_bin,run):
   ex = exml.EditXml()
-  ex.EditParams('./JetScapeWriterAscii',0)
-  ex.EditParams('./chinko',0)
-  ex.EditParams('./Eloss/Lbt/name',1)
+  ex.EditParams('./outputFilename','M')
+  ex.EditParams('./Eloss/Matter/DUM/Get/GOO','yaess')
+  ex.EditParams('./Eloss/Matter/Q0','M')
   pass
 
 def GetParams(argc,argvs):

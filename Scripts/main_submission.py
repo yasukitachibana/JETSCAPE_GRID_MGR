@@ -29,9 +29,9 @@ def GetParams(argc,argvs):
     print('\t$python main_submission.py PP [eCM] [centrality (e.g. 0-5)] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     exit()
   
-  if argvs[1] == 'PP' and argc < 8:
+  if argvs[1] == 'PP' and argc < 7:
     print('Please Input Options')
-    print('\t$python main_submission.py PP [eCM] [centrality (e.g. 0-5)] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PP [eCM] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     exit()
 
   if argvs[1] != 'PP' and argc < 11:

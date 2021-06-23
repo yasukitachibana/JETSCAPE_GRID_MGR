@@ -1,4 +1,3 @@
-#import re
 import os
 import threading
 import xml.etree.ElementTree as ET
@@ -24,37 +23,25 @@ class EditXml:
     return self.__xml
 
   def EditParams(self,xpath,val):
-    print(self.__xml.findtext(xpath))
-    # for tag in self.__xml.iterfind(tags[0]):
-    #   print(tag.text)
 
-    
-    # for nic in root.iterfind('.//NIC/.'):
-    # if nic.find('./NETWORK').text.strip()=="br100":
-    #     print(nic.find('./MAC').text)
-      
-    pass
-    
-#     tag_module = GetTag(module_name)
-#     match = re.search(tag_module,copy)
-#     org = ''
-#     if match:
-#         org = match.group()
-#     else:
-#         print('failed to find the tag for the module: ' + module_name)
-#         exit()
+    element = self.__xml.find(xpath)    
+    if not element == None:
+      element.text = val
+    else:
+      self.AddElement(xpath)
+      element = self.__xml.find(xpath)
+      element.text = val
+    self.__xml.write('test_out.xml',encoding='UTF-8' )
 
-#     new = org
-#     new = re.sub(GetTag(tag),GetTagVal(tag,val),new)
-#     return copy.replace(org,new)
+  def AddElement(self,xpath):
 
-
-# def GetTag(tag):
-#     return '<'+tag+'>(.|\s)*?</'+tag+'>'
-
-# def GetTagVal(tag,val):
-#     message1 = '\t<!-- auto-generated  -->\n\t'
-#     message2 = '\n\t<!-- --------------- -->'
-#     return message1+'<'+tag+'>'+str(val)+'</'+tag+'>'+message2
-
-
+    path_list = xpath.split('/')
+    path = path_list[0]
+    parent = self.__xml
+    element = parent
+    for i in range(1,len(path_list)):
+      path = os.path.join(path,path_list[i])
+      parent = element
+      element = self.__xml.find(path)
+      if element == None:
+        element = ET.SubElement(parent, path_list[i])
