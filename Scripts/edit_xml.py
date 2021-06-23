@@ -24,7 +24,14 @@ class EditXml:
     return self.__xml
 
   def EditParams(self,tags,val):
-    print(self.__xml)
+    for tag in self.__xml.iterfind(tags[0]):
+      print(tag)
+
+    
+    # for nic in root.iterfind('.//NIC/.'):
+    # if nic.find('./NETWORK').text.strip()=="br100":
+    #     print(nic.find('./MAC').text)
+      
     pass
     
 #     tag_module = GetTag(module_name)

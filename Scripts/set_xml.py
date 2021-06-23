@@ -12,7 +12,7 @@ def SetXml(i_bin,run):
 
 def SetXmlGeneral(i_bin,run):
   ex = exml.EditXml()
-  ex.EditParams([],0)
+  ex.EditParams(['JetScapeWriterAscii'],0)
   pass
 
 def GetParams(argc,argvs):
