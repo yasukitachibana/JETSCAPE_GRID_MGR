@@ -2,14 +2,17 @@ import set_configurations as configs
 import sys
 import os
 import xml.etree.ElementTree as ET
+import edit_xml as exml
 
 def SetXml(i_bin,run):
-    con = configs.SetConfigurations()
-    print('run '+str(run))
-    original_xml = con.OriginalXml()
-    tree = ET.parse(original_xml)
-    print(tree)
-    tree.write('out_test.xml', encoding='utf-8')
+  con = configs.SetConfigurations()
+  ex = exml.EditXml()
+  ex.ReadXml(con.OriginalXml())
+  SetXmlGeneral(i_bin,run)
+
+def SetXmlGeneral(i_bin,run):
+  exml.EditXml([])
+  pass
 
 def GetParams(argc,argvs):
   print(argvs)
