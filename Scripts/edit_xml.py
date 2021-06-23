@@ -23,7 +23,7 @@ class EditXml:
   def Xml(self):
     return self.__xml
 
-  def EditParams(tags,val):
+  def EditParams(self,tags,val):
     print(self.__xml)
     pass
     
