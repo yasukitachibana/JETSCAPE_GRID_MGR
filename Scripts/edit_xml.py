@@ -23,13 +23,8 @@ class EditXml:
   def Xml(self):
     return self.__xml
 
-  def EditParams(self,tags,val):
-    it = self.__xml
-    
-    for i in range(len(tags)):
-      for el in it.iterfind(tags[i]):
-        it = el
-        print(el.text)
+  def EditParams(self,xpath,val):
+    self.__xml.findtext(xpath)
     # for tag in self.__xml.iterfind(tags[0]):
     #   print(tag.text)
 
