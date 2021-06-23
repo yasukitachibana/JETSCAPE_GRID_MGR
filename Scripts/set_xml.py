@@ -9,7 +9,7 @@ def SetXml(i_bin,run):
     original_xml = con.OriginalXml()
     tree = ET.parse(original_xml)
     print(tree)
-
+    tree.write('out_test.xml', encoding='utf-8')
 
 def GetParams(argc,argvs):
   print(argvs)
