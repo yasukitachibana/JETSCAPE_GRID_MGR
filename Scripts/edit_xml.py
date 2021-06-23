@@ -25,7 +25,7 @@ class EditXml:
 
   def EditParams(self,tags,val):
     for tag in self.__xml.iterfind(tags[0]):
-      print(tag)
+      print(tag.text)
 
     
     # for nic in root.iterfind('.//NIC/.'):
