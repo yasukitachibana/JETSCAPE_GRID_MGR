@@ -44,7 +44,8 @@ class EditXml:
   def DeleteElement(self,xpath):
     parent = self.__xml.find(os.path.dirname(xpath))
     element = self.__xml.find(xpath)
-    parent.remove(element)
+    if not element == None:
+      parent.remove(element)
 
   def PrintXml(self,filename):
     self.__xml.write(filename,encoding='UTF-8')
