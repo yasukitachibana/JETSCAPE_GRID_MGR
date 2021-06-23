@@ -1,5 +1,6 @@
-import re
+#import re
 import os
+import threading
 import xml.etree.ElementTree as ET
 
 class EditXml:
