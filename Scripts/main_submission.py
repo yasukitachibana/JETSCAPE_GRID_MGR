@@ -24,7 +24,7 @@ def GetParams(argc,argvs):
 
   if argc < 2:
     print('Please Input Options')
-    print('\t$python main_submission.py AA [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PbPb [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     print('Please Input Options')
     print('\t$python main_submission.py PP [eCM] [centrality (e.g. 0-5)] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     exit()
@@ -36,7 +36,7 @@ def GetParams(argc,argvs):
 
   if argvs[1] != 'PP' and argc < 11:
     print('Please Input Options')
-    print('\t$python main_submission.py AA [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PbPb [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     exit()
 
   print( '##################')
@@ -47,8 +47,8 @@ def GetParams(argc,argvs):
   ecm = int(argvs[2])
 
   cent = ''
-  a_s = 0.0
-  q_s = 0.0
+  a_s = '0'
+  q_s = '0'
   recoil = 0
   print( '------------------')
   if argvs[1] != 'PP':
@@ -59,8 +59,8 @@ def GetParams(argc,argvs):
     print( 'take recoil:', no_yes[int(argvs[6])] )
     print( '------------------')
     cent = argvs[3]
-    a_s = float(argvs[4])
-    q_s = float(argvs[5])
+    a_s = argvs[4]
+    q_s = argvs[5]
     recoil = int(argvs[6])
 
   print( 'Hard Process:', argvs[-4])

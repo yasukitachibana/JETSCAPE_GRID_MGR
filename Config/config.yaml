@@ -1,18 +1,16 @@
-
-
 OutputDirPath:
-  '/wsu/tmp/YasukiAAPaper'
-
+  './'
+  #'/wsu/tmp/YasukiAAPaper'
 CodePath:
   #'/wsu/tmp/YasukiAAPaper/JETSCAPE-COMP'
   '../../JETSCAPE'
-  
+JLoss:
+  ['Matter','LBT']
 OriginalUserXml:
   AA:
-    'config/jetscape_user_pbpb_grid.xml'
+    'config/jetscape_user.xml'
   PP:
     'config/jetscape_user_PP19.xml'
-
 HydroFilePath:
   5020:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/5TeV_{}'
@@ -20,19 +18,22 @@ HydroFilePath:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/2760GeV-{}'
   200:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/200GeV_{}'
-
 QueOptions:
   '-N 1 -n 1 --mem=6G -t 2-0'
-
-
-
-run: 10
-
+run: 1
+nEvents: 4000
+#############################################
+nReuseHydro: 20
+#############################################
+qhat: 5
+t_start: '0.6'
+temp_f: '0.16'
+#############################################
 pthat:
   PGun:
-    5020: [100, 120, 140, 160, 180, 200, 250, 300, 350]
-    2760: [100, 120, 140, 160, 180, 200, 250, 300, 350]
-    200: [10, 15, 20, 25, 30, 40, 50, 60, 80, 100]
+    5020: [[100], [120], [140], [160], [180], [200], [250], [300], [350] ]
+    2760: [[100], [120], [140], [160], [180], [200], [250], [300], [350] ]
+    200: [[10], [15], [20], [25], [30], [40], [50], [60], [80], [100] ]
 
   PythiaGun:
     5020:
