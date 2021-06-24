@@ -10,22 +10,37 @@ def Sequence(params, run_job):
 
   i_bin_start = params['start']
   i_bin_end = min(params['end'], con.IbinMax())
-
+  print( '##################')
   for i_bin in range(i_bin_start, i_bin_end):
     run_total = con.RunTotal()
     for run in range(0,run_total):
       run_job(i_bin,run)
-
+  print( '##################')
   if con.Notification():
     Observation()
+  print( '##################')
+  print( 'Submission Ends.')
+  print( '##################')
 
 def Observation():
-  print(cmd.CheckUpdateCommand())
-  pass
+  con = configs.SetConfigurations()
+
+  command = cmd.CheckUpdateCommand()
+  run_command = cmd.RunCommand(command)
+  master_command = cmd.MasterCommand(run_command)
+
+  log = con.ObsLogFilename()
+  err = con.ObsErrorFilename()    
+  job = con.ObsJobname()    
+
+  qsub_command = cmd.QsubCommand(master_command, job, log, err)    
+  print('Submission, Que:', con.Que())
+  print(qsub_command)
+  print('-')
+  os.system(qsub_command)
 
 def Main(params):
   Sequence(params, single_run.Run)
-
 
 def GetParams(argc,argvs):
   print(argvs)

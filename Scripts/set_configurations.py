@@ -211,13 +211,24 @@ class SetConfigurations:
     return os.path.join(self.LogDirname(), filename)
 
   def LogFilename(self,i_bin,run):
-    filename = 'LogBin{}_{}_Run{}.out'
+    filename = 'LogBin{}_{}_Run{}.txt'
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
     return os.path.join(self.LogDirname(), filename)
 #########################################
   def Jobname(self,i_bin,run):
     name = 'RunBin{}_{}_Run{}'
     return name.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
+#########################################
+  def ObsErrorFilename(self):
+    filename = 'ObsError.txt'
+    return os.path.join(self.LogDirname(), filename)
+
+  def ObsLogFilename(self):
+    filename = 'ObsLog.txt'
+    return os.path.join(self.LogDirname(), filename)
+#########################################
+  def ObsJobname(self):
+    return 'Ops_'+self.__output_dir_name
 
 def Main():
   a = SetConfigurations() 

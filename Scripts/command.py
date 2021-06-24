@@ -34,7 +34,7 @@ def PartonListCommand(i_bin,run):
 ################################################
 def CheckUpdateCommand():
   con = configs.SetConfigurations()
-  command = 'python update_check.py --d "{}" --e "{}"'
+  command = 'python update_check.py --d {} --e {} '
   dir = con.OutputDirname()
   email = con.Email()
   return command.format(dir,email)
