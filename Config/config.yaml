@@ -1,11 +1,11 @@
+#############################################
 OutputDirPath:
   './'
   #'/wsu/tmp/YasukiAAPaper'
 CodePath:
   #'/wsu/tmp/YasukiAAPaper/JETSCAPE-COMP'
   '/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
-JLoss:
-  ['Matter','LBT']
+#############################################
 OriginalUserXml:
   AA:
     'config/jetscape_user.xml'
@@ -13,7 +13,7 @@ OriginalUserXml:
     'config/jetscape_user_PP19.xml'
 MasterXml:
     'config/jetscape_master.xml'
-
+#############################################
 HydroFilePath:
   5020:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/5TeV_{}'
@@ -21,16 +21,25 @@ HydroFilePath:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/2760GeV-{}'
   200:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/200GeV_{}'
+#############################################
+Notification:
+  OnOff: 1
+  Email: 'yasuki.tachibana@gmail.com'
+#############################################
 QueOptions:
   '-N 1 -n 1 --mem=6G -t 2-0'
-run: 1
-nEvents: 4000
-#############################################
-nReuseHydro: 20
 #############################################
 qhat: 5
 t_start: '0.6'
 temp_f: '0.16'
+#############################################
+JLoss:
+  ['Matter','LBT']
+#############################################
+run: 1
+nEvents: 4000
+#############################################
+nReuseHydro: 20
 #############################################
 CMakeOption: ''
 MakeOption: ''

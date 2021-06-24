@@ -32,6 +32,13 @@ def PartonListCommand(i_bin,run):
   return './FinalStatePartons '  + con.OutputFilename(i_bin,run) + ' ' + con.PartonListname(i_bin,run)
 
 ################################################
+def CheckUpdateCommand():
+  con = configs.SetConfigurations()
+  command = 'python update_check.py --d "{}" --e "{}"'
+  dir = con.OutputDirname()
+  email = con.Email()
+  return command.format(dir,email)
+################################################
 def RunCommand(command):
   return '"python run.py '+command+'"'
 
@@ -40,7 +47,6 @@ def MasterCommand(run_command):
   script_dir = con.ScriptDir()
   job_master = os.path.join(script_dir,'JobMaster')
   return ' '.join([job_master,script_dir,run_command])
-
 ################################################
 def QsubCommand(master_command, job, log, err):
   con = configs.SetConfigurations()

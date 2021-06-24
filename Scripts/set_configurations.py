@@ -33,6 +33,8 @@ class SetConfigurations:
   __make_opt = ''
   __que = ''
   __que_opt = ''
+  __notification = ''
+  __email = ''
 
   def __init__(self):
     pass
@@ -78,7 +80,11 @@ class SetConfigurations:
     self.__make_opt = self.__yaml_data['MakeOption']
     self.__que = params['que']
     self.__que_opt = self.__yaml_data['QueOptions']
-
+    self.__notification = self.__yaml_data['Notification']['OnOff']
+    if self.__notification:
+      self.__email = self.__yaml_data['Notification']['Email']
+      print('Notification is ON. Email will be sent to', self.__email)
+      print('##################')
   def SetOutdirname(self, params):
     outname = str(params['eCM'])+'_'+params['system']
     if not params['system'] == 'PP':
@@ -156,6 +162,13 @@ class SetConfigurations:
 
   def QueOpt(self):
     return self.__que_opt
+
+  def Notification(self):
+    return self.__notification
+
+  def Email(self):
+    return self.__email
+
 
   def ExecRunJetscape(self):
     return 'runJetscape'

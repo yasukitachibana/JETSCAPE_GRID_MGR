@@ -2,10 +2,9 @@ import os
 import sys
 import set_configurations as configs
 import single_run
+import command as cmd
 
-
-def Main(params):
-  print('Main')
+def Sequence(params, run_job):
   con = configs.SetConfigurations()
   con.InitConfigs(os.getcwd(), '../Config/config.yaml', params)
 
@@ -15,7 +14,17 @@ def Main(params):
   for i_bin in range(i_bin_start, i_bin_end):
     run_total = con.RunTotal()
     for run in range(0,run_total):
-      single_run.Run(i_bin,run)
+      run_job(i_bin,run)
+
+  if con.Notification():
+    Observation()
+
+def Observation():
+  print(cmd.CheckUpdateCommand())
+  pass
+
+def Main(params):
+  Sequence(params, single_run.Run)
 
 
 def GetParams(argc,argvs):

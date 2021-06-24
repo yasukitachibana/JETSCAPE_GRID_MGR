@@ -15,13 +15,10 @@ def Run(i_bin,run):
   mdir.Mkdirs(con.LogDirname())  
   mdir.Mkdirs(con.BuildDirname(i_bin,run))
 
-
   set_xml.SetXml(i_bin, run)
   command = cmd.Command(i_bin,run)
   run_command = cmd.RunCommand(command)
   master_command = cmd.MasterCommand(run_command)
-  #print(master_command)
-
 
   if con.Que() == 'test':
     print('test mode')
@@ -39,7 +36,7 @@ def Run(i_bin,run):
     print(qsub_command)
     print('-')
     os.system(qsub_command)
-    
+
 def GetParams(argc,argvs):
   print(argvs)
   print(argc)  
