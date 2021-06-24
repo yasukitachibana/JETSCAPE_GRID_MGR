@@ -3,7 +3,7 @@ OutputDirPath:
   #'/wsu/tmp/YasukiAAPaper'
 CodePath:
   #'/wsu/tmp/YasukiAAPaper/JETSCAPE-COMP'
-  '../../JETSCAPE'
+  '/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
 JLoss:
   ['Matter','LBT']
 OriginalUserXml:
@@ -11,6 +11,9 @@ OriginalUserXml:
     'config/jetscape_user.xml'
   PP:
     'config/jetscape_user_PP19.xml'
+MasterXml:
+    'config/jetscape_master.xml'
+
 HydroFilePath:
   5020:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/5TeV_{}'
@@ -28,6 +31,9 @@ nReuseHydro: 20
 qhat: 5
 t_start: '0.6'
 temp_f: '0.16'
+#############################################
+CMakeOption: ''
+MakeOption: ''
 #############################################
 pthat:
   PGun:

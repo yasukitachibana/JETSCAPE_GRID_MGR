@@ -15,6 +15,7 @@ class SetConfigurations:
   __output_dir_path = ''
   __code_path = ''
   __original_xml = ''
+  __master_xml = ''
   __output_dir_name = ''
   __n_events = 0
   __pp_or_AA = ''
@@ -27,7 +28,11 @@ class SetConfigurations:
   __qhat = 0
   __n_hydro = 0
   __alpha_s = ''
-  __hydro_file_path = ''  
+  __hydro_file_path = ''
+  __cmake_opt = ''
+  __make_opt = ''
+  __que = ''
+  __que_opt = ''
 
   def __init__(self):
     pass
@@ -59,6 +64,7 @@ class SetConfigurations:
     self.__output_dir_path = self.__yaml_data['OutputDirPath']
     self.__code_path = self.__yaml_data['CodePath']
     self.__original_xml = os.path.join(self.__code_path, self.__yaml_data['OriginalUserXml'][self.__pp_or_AA])
+    self.__master_xml = os.path.join(self.__code_path, self.__yaml_data['MasterXml'])
     self.__run_total = self.__yaml_data['run']     
     self.__pt_hat_bins = self.__yaml_data['pthat'][params['hard']][params['eCM']]
     self.__i_bin_max = len(self.__pt_hat_bins)
@@ -68,6 +74,10 @@ class SetConfigurations:
     self.__temp_end = self.__yaml_data['temp_f']   
     self.__n_hydro = self.__yaml_data['nReuseHydro']   
     self.__alpha_s = params['alphas']
+    self.__cmake_opt = self.__yaml_data['CMakeOption']
+    self.__make_opt = self.__yaml_data['MakeOption']
+    self.__que = params['que']
+    self.__que_opt = self.__yaml_data['QueOptions']
 
   def SetOutdirname(self, params):
     outname = str(params['eCM'])+'_'+params['system']
@@ -78,8 +88,14 @@ class SetConfigurations:
     self.__output_dir_name = outname
 
 ########################################################################
+  def CodePath(self):
+    return self.__code_path
+
   def OriginalXml(self):
     return self.__original_xml
+
+  def MasterXml(self):
+    return self.__master_xml
 
   def RunTotal(self):
     return self.__run_total
@@ -114,11 +130,6 @@ class SetConfigurations:
   def Qsw(self):
     return float(self.__qsw)
 
-  def OutputFilename(self,i_bin,run):
-    filename = 'TestOutBin{}_{}_Run{}.dat'
-    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
-    return os.path.join(self.__output_dir_path, self.__output_dir_name, filename)
-
   def Qhat(self):
     return self.__qhat
 
@@ -134,11 +145,66 @@ class SetConfigurations:
   def HydroFilePath(self):
     return self.__hydro_file_path
 
-  def GetXmlFilename(self,i_bin,run):
+  def CmakeOpt(self):
+    return self.__cmake_opt
+
+  def MakeOpt(self):
+    return self.__make_opt
+
+  def Que(self):
+    return self.__que
+
+  def QueOpt(self):
+    return self.__que_opt
+
+  def ExecRunJetscape(self):
+    return 'runJetscape'
+
+#########################################
+  def OutputDirname(self):
+    return os.path.join(self.__output_dir_path, self.__output_dir_name)
+
+  def OutputFilename(self,i_bin,run):
+    filename = 'TestOutBin{}_{}_Run{}.dat'
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
+    return os.path.join(self.OutputDirname(), filename)
+
+  def XmlFilename(self,i_bin,run):
     filename = 'SettingsBin{}_{}_Run{}.xml'
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
-    return os.path.join(self.__output_dir_path, self.__output_dir_name, filename)
+    return os.path.join(self.OutputDirname(), filename)
 
+  def BuildDirname(self,i_bin,run):
+    filename = 'BuildBin{}_{}_Run{}'
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
+    return os.path.join(self.OutputDirname(), filename)
+#########################################
+  def HadronListname(self,i_bin,run):
+    filename = 'JetscapeHadronListBin{}_{}_Run{}.out'
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
+    return os.path.join(self.OutputDirname(), filename)
+
+  def PartonListname(self,i_bin,run):
+    filename = 'JetscapePartonListBin{}_{}_Run{}.out'
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
+    return os.path.join(self.OutputDirname(), filename)
+#########################################
+  def LogDirname(self):
+    return os.path.join(self.OutputDirname(), 'Log')
+
+  def ErrorFilename(self,i_bin,run):
+    filename = 'ErrorBin{}_{}_Run{}.txt'
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
+    return os.path.join(self.LogDirname(), filename)
+
+  def LogFilename(self,i_bin,run):
+    filename = 'LogBin{}_{}_Run{}.out'
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
+    return os.path.join(self.LogDirname(), filename)
+#########################################
+  def Jobname(self,i_bin,run):
+    name = 'RunBin{}_{}_Run{}'
+    return name.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
 
 def Main():
   a = SetConfigurations() 

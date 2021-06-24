@@ -13,10 +13,7 @@ def SetXml(i_bin,run):
   SetXmlHard(i_bin,run)
   SetXmlEloss(i_bin,run)
   SetXmlMedium(i_bin,run)
-
-  xml_filename = con.GetXmlFilename(i_bin,run)  
-  #print(xml_filename)
-  ex.PrintXml(xml_filename)
+  ex.PrintXml(con.XmlFilename(i_bin,run))
 
 #######################################################
 # XML for Jet Energy Loss

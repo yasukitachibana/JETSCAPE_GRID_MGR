@@ -1,58 +1,45 @@
 import set_configurations as configs
 import sys
 import os
+import shutil
 import set_xml
 import manage_dir as mdir
+import command as cmd
 
 def Run(i_bin,run):
 
-    con = configs.SetConfigurations()
-    print('run '+str(run))
+  con = configs.SetConfigurations()
+  print('run '+str(run))
 
-    exec_name = 'runJetscape'
+  mdir.Mkdirs(con.OutputDirname())
+  mdir.Mkdirs(con.LogDirname())  
+  mdir.Mkdirs(con.BuildDirname(i_bin,run))
 
 
-    set_xml.SetXml(i_bin, run)
+  set_xml.SetXml(i_bin, run)
+  command = cmd.Command(i_bin,run)
+  run_command = cmd.RunCommand(command)
+  master_command = cmd.MasterCommand(run_command)
+  #print(master_command)
 
 
-    # eCM = int(argvs[1])
-    # PPAA = argvs[2]
-    # que_name = argvs[9]
+  if con.Que() == 'test':
+    print('test mode')
+    print('Submission, Main Command')
+    print(master_command)
+    print('-')
+    os.system(master_command)
+    exit()
+  else:
+    log = con.LogFilename(i_bin,run)
+    err = con.ErrorFilename(i_bin,run)    
+    job = con.Jobname(i_bin,run)    
+    qsub_command = cmd.QsubCommand(master_command, job, log, err)    
+    print('Submission, Que:', con.Que())
+    print(qsub_command)
+    print('-')
+    os.system(qsub_command)
     
-    # outdir = os.path.join(gcom_gf_spath.GetOutputPath(),gcom_gf_spath.GetOutdirname(argc,argvs))
-    # mdir.Mkdirs(outdir)
-    # user_xml = gcom_gf_spath.GetUserXmlPath()
-
-    # xml_filename = os.path.join(outdir,gcom_gf_spath.GetXmlFilename(this_bin,run))
-    # sigma_filename = os.path.join(outdir,gcom_gf_spath.GetSigmaFilename(this_bin,run))
-    # hadron_filename = os.path.join(outdir,gcom_gf_spath.GetHadronListFilename(this_bin,run))
-    # parton_filename = os.path.join(outdir,gcom_gf_spath.GetPartonListFilename(this_bin,run))
-    # out_filename = os.path.join(outdir,gcom_gf_spath.GetTestOutFilename(this_bin,run))
-    # build_dir = os.path.join(outdir,gcom_gf_spath.GetBuidDirName(this_bin,run))
-    
-    # GetXml(argc, argvs, user_xml, xml_filename, this_bin, eCM, run)
-    
-    # command = gcom_gf_spath.GetCommand(code_path, build_dir, exec_name, xml_filename, out_filename, sigma_filename, hadron_filename,parton_filename)
-    
-    # mdir.Mkdirs(build_dir)
-    
-    # command_run = '"python run.py '+command+'"'
-    
-    # master_command = os.path.join(script_dir,'JobMaster')+' '+script_dir+' '+command_run
-    # #print(master_command)
-    
-    # qsub_command = gcom_gf_spath.GenerateQsubCommand(gcom_gf_spath.GetJobName(this_bin,run),master_command, que_name)
-    
-    # #print('Submission, Main Command')
-    # #print(master_command)
-    # #print('-')
-    # #os.system(master_command)
-    # #exit()
-    
-    # print('Submission, Qsub Command')
-    # print(qsub_command)
-    # print('-')
-    # os.system(qsub_command)
 def GetParams(argc,argvs):
   print(argvs)
   print(argc)  
