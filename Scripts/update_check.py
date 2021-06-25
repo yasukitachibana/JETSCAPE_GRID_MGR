@@ -28,7 +28,7 @@ def CheckTime(dirname):
   td = current_time - t
   #print(td)
 
-  if(td>3600):
+  if(td>1200):
     return False
   return True
 
