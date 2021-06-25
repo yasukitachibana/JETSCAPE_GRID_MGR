@@ -35,6 +35,7 @@ class SetConfigurations:
   __que_opt = ''
   __notification = ''
   __email = ''
+  __recoil = 0
 
   def __init__(self):
     pass
@@ -80,6 +81,7 @@ class SetConfigurations:
     self.__make_opt = self.__yaml_data['MakeOption']
     self.__que = params['que']
     self.__que_opt = self.__yaml_data['QueOptions']
+    self.__recoil = params['recoil']
     self.__notification = self.__yaml_data['Notification']['OnOff']
     if self.__notification:
       self.__email = self.__yaml_data['Notification']['Email']
@@ -162,6 +164,9 @@ class SetConfigurations:
 
   def QueOpt(self):
     return self.__que_opt
+
+  def Recoil(self):
+    return self.__recoil
 
   def Notification(self):
     return self.__notification

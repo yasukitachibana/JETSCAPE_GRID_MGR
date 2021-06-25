@@ -161,6 +161,10 @@ def SetXmlEloss(i_bin,run):
   ex.EditParams('./Eloss/formTime', '-0.1')
   ex.EditParams('./Eloss/maxT', '250')
   ###################################  
+  ex.EditParams('./JetHadronization/name', 'colorless')
+  ex.EditParams('./JetHadronization/take_recoil', con.Recoil() )
+  ex.EditParams('./JetHadronization/eCMforHadronization', str(int(con.Ecm/2)) )  
+  ###################################  
   if con.PPorAA() == 'PP':
     SetXmlPPjet(i_bin,run)
   else:
