@@ -177,8 +177,8 @@ class SetConfigurations:
   def OutputDirname(self):
     return os.path.join(self.__output_dir_path, self.__output_dir_name)
 
-  def OutputFilename(self,i_bin,run):
-    filename = 'TestOutBin{}_{}_Run{}.dat'
+  def OutputFilename(self,i_bin,run,dat='.dat'):
+    filename = 'TestOutBin{}_{}_Run{}'+dat
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
     return os.path.join(self.OutputDirname(), filename)
 
