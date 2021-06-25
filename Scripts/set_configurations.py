@@ -228,7 +228,7 @@ class SetConfigurations:
     return os.path.join(self.LogDirname(), filename)
 #########################################
   def ObsJobname(self):
-    return 'Ops_'+self.__output_dir_name
+    return 'Obs_'+self.__output_dir_name
 
 def Main():
   a = SetConfigurations() 
