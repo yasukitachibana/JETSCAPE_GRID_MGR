@@ -9,7 +9,7 @@ def UpdateCheck(dirname, email):
 
   while CheckTime(dirname):
     print(datetime.datetime.now(), "| Checked ", dirname)
-    time.sleep(600)
+    time.sleep(300)
   mail_text = "No Update in " + str(dirname)
   os.system('echo ' + mail_text + ' | sendmail ' + email)
   print('Sent Notification Email. Exit.')
