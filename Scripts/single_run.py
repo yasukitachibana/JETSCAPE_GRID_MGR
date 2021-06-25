@@ -10,16 +10,21 @@ def Run(i_bin,run):
 
   con = configs.SetConfigurations()
   print('run '+str(run))
-
+  ##################
   mdir.Mkdirs(con.OutputDirname())
   mdir.Mkdirs(con.LogDirname())  
-  mdir.Mkdirs(con.BuildDirname(i_bin,run))
-
+  build_dir = con.BuildDirname(i_bin,run)
+  if os.path.isdir(build_dir):
+      print('*Delete' , build_dir)
+      shutil.rmtree(build_dir)
+  mdir.Mkdirs(build_dir)
+  ##################
   set_xml.SetXml(i_bin, run)
+  ##################
   command = cmd.Command(i_bin,run)
   run_command = cmd.RunCommand(command)
   master_command = cmd.MasterCommand(run_command)
-
+  ##################
   if con.Que() == 'test':
     print('test mode')
     print('Submission, Main Command')
