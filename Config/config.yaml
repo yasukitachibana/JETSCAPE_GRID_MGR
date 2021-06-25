@@ -1,16 +1,16 @@
 #############################################
 OutputDirPath:
-  './'
-  #'/wsu/tmp/YasukiAAPaper'
+  '/wsu/tmp/YasukiAAPaper'
 CodePath:
-  #'/wsu/tmp/YasukiAAPaper/JETSCAPE-COMP'
-  '/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
+  '/wsu/tmp/YasukiAAPaper/JETSCAPE-COMP'
+  #'/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
 #############################################
 OriginalUserXml:
   AA:
     'config/jetscape_user.xml'
   PP:
-    'config/jetscape_user_PP19.xml'
+    'jetscape_user_pbpb_grid.xml'
+    #'config/jetscape_user_PP19.xml'
 MasterXml:
     'config/jetscape_master.xml'
 #############################################
@@ -29,17 +29,18 @@ Notification:
 QueOptions:
   '-N 1 -n 1 --mem=6G -t 2-0'
 #############################################
-qhat: 5
+qhat: 1
+  #5
 t_start: '0.6'
 temp_f: '0.16'
 #############################################
 JLoss:
   ['Matter','LBT']
 #############################################
-run: 1
-nEvents: 4000
+run: 10
+nEvents: 4800
 #############################################
-nReuseHydro: 20
+nReuseHydro: 12
 #############################################
 CMakeOption: ''
 MakeOption: ''
