@@ -5,12 +5,12 @@ import xml.etree.ElementTree as ET
 import edit_xml as exml
 import random
 
-def SetXml(i_bin,run):
+def SetXml(i_bin,run,i_tag):
   con = configs.SetConfigurations()
   ex = exml.EditXml()
   ex.ReadXml(con.OriginalXml())
   SetXmlGeneral(i_bin,run)
-  SetXmlHard(i_bin,run)
+  SetXmlHard(i_bin,run,i_tag)
   SetXmlEloss(i_bin,run)
   SetXmlMedium(i_bin,run)
   ex.PrintXml(con.XmlFilename(i_bin,run))
@@ -176,14 +176,14 @@ def SetXmlEloss(i_bin,run):
 #######################################################
 # XML for Hard Process
 #---
-def SetXmlHard(i_bin,run):
+def SetXmlHard(i_bin,run,i_tag):
   con = configs.SetConfigurations()
   if con.Hard() == 'PythiaGun':
-    SetXmlPythiaGun(i_bin,run)
+    SetXmlPythiaGun(i_bin,run,i_tag)
   elif con.Hard() == 'PGun':
-    SetXmlPGun(i_bin,run)
+    SetXmlPGun(i_bin,run,i_tag)
 
-def SetXmlPythiaGun(i_bin,run):
+def SetXmlPythiaGun(i_bin,run,i_tag=0):
   con = configs.SetConfigurations()
   ex = exml.EditXml()  
   ex.DeleteElement('./Hard/PGun')
@@ -194,12 +194,18 @@ def SetXmlPythiaGun(i_bin,run):
   ex.EditParams('./Hard/PythiaGun/useHybridHad', 0)
   ex.EditParams('./Hard/PythiaGun/FSR_on', 0)
 
-def SetXmlPGun(i_bin,run):
+def SetXmlPGun(i_bin,run,i_tag):
   con = configs.SetConfigurations()
   ex = exml.EditXml()  
   ex.DeleteElement('./Hard/PythiaGun')
-  ex.EditParams('./Hard/PGun/name', 'PGun')
+  ex.EditParams('./Hard/PGun/name', 'PGun')  
   ex.EditParams('./Hard/PGun/pT', con.PtHatBin()[i_bin][0])
+  parID = 0
+  if con.Tags()[i_tag] == 'quark':
+    parID = 1
+  elif con.Tags()[i_tag] == 'gluon':
+    parID = 21
+  ex.EditParams('./Hard/PGun/parID', parID)
   ex.EditParams('./Hard/PGun/useHybridHad', 0)
 #######################################################
 

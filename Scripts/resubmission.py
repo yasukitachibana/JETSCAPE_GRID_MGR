@@ -5,7 +5,7 @@ import main_submission as main_sub
 import shutil
 import single_run
 
-def CheckRun(i_bin,run):
+def CheckRun(i_bin,run,i_tag):
   con = configs.SetConfigurations()
   hadron = con.HadronListname(i_bin,run)
   print('Check Existence of', hadron)

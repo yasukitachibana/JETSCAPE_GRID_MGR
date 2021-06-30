@@ -5,20 +5,30 @@ import single_run
 import command as cmd
 
 def Sequence(params, run_job):
+
   con = configs.SetConfigurations()
-  con.InitConfigs(os.getcwd(), '../Config/config.yaml', params)
+  if params['que'] == 'test':
+    yaml_file = '../Config/test.yaml'
+  else:
+    yaml_file = '../Config/config.yaml'
+  con.InitConfigs(os.getcwd(), yaml_file, params)
 
   i_bin_start = params['start']
   i_bin_end = min(params['end'], con.IbinMax())
+  run_total = con.RunTotal()
+
   print( '##################')
-  for i_bin in range(i_bin_start, i_bin_end):
-    run_total = con.RunTotal()
-    for run in range(0,run_total):
-      run_job(i_bin,run)
-  print( '##################')
-  if con.Notification():
-    Observation()
-  print( '##################')
+  for i_tag, tag in enumerate(con.Tags()):
+    print(i_tag, ': ', tag)
+    con.SetOutdirname(i_tag)
+    print( '##################')
+    for i_bin in range(i_bin_start, i_bin_end):
+      for run in range(0,run_total):
+        run_job(i_bin,run,i_tag)
+    print( '##################')
+    if con.Notification():
+      Observation()
+    print( '##################')
   print( 'Submission Ends.')
   print( '##################')
 
@@ -37,7 +47,10 @@ def Observation():
   print('Submission, Que:', con.Que())
   print(qsub_command)
   print('-')
-  os.system(qsub_command)
+  if con.Que() == 'test':
+    print('test mode.')
+  else:
+    os.system(qsub_command)
 
 def Main(params):
   Sequence(params, single_run.Run)
@@ -50,7 +63,7 @@ def GetParams(argc,argvs):
     print('Please Input Options')
     print('\t$python main_submission.py PbPb [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     print('Please Input Options')
-    print('\t$python main_submission.py PP [eCM] [centrality (e.g. 0-5)] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PP [eCM] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     exit()
   
   if argvs[1] == 'PP' and argc < 7:
@@ -97,6 +110,7 @@ def GetParams(argc,argvs):
   que = argvs[-1]
   print( '##################')
   print( '##################')
+
 
   params = {
     'system': sys,

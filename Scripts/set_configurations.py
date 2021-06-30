@@ -22,7 +22,7 @@ class SetConfigurations:
   __hard = ''
   __eCM = 0
   __jloss = []
-  __qsw = 0
+  __qsw = ''
   __t_start = ''
   __temp_end = ''  
   __qhat = 0
@@ -36,6 +36,10 @@ class SetConfigurations:
   __notification = ''
   __email = ''
   __recoil = 0
+  __tag = []
+  __system = ''
+  __centrality = ''
+  
 
   def __init__(self):
     pass
@@ -52,47 +56,60 @@ class SetConfigurations:
     with open(config_file, 'r') as ymlf:
       self.__yaml_data = yaml.safe_load(ymlf)
     self.SetParameters(params)
-    self.SetOutdirname(params)
+    self.SetOutdirname()
 
   def SetParameters(self,params): 
     self.__eCM = params['eCM']
-    if params['system'] == 'PP':
+    self.__system = params['system']
+    self.__hard = params['hard']
+    self.__que = params['que']      
+
+
+    if self.__system == 'PP':
       self.__pp_or_AA = 'PP'
     else:
       self.__pp_or_AA = 'AA'
-      self.__hydro_file_path = self.__yaml_data['HydroFilePath'][params['eCM']].format(params['centrality'])
-    self.__hard = params['hard']
-    self.__qsw = params['Qsw']    
+      self.__centrality = params['centrality']
+      self.__alpha_s = params['alphas']      
+      self.__qsw = params['Qsw']     
+      self.__recoil = params['recoil']      
+      self.__hydro_file_path = self.__yaml_data['HydroFilePath'][self.__eCM].format(self.__centrality)
+
+
+    if self.__hard == 'PGun':
+      self.__tag = ['quark','gluon']
+    else:
+      self.__tag = ['']
+    
     self.__n_events = self.__yaml_data['nEvents']
     self.__output_dir_path = self.__yaml_data['OutputDirPath']
     self.__code_path = self.__yaml_data['CodePath']
     self.__original_xml = os.path.join(self.__code_path, self.__yaml_data['OriginalUserXml'][self.__pp_or_AA])
     self.__master_xml = os.path.join(self.__code_path, self.__yaml_data['MasterXml'])
     self.__run_total = self.__yaml_data['run']     
-    self.__pt_hat_bins = self.__yaml_data['pthat'][params['hard']][params['eCM']]
+    self.__pt_hat_bins = self.__yaml_data['pthat'][self.__hard][self.__eCM]
     self.__i_bin_max = len(self.__pt_hat_bins)
     self.__jloss = self.__yaml_data['JLoss']
     self.__qhat = self.__yaml_data['qhat']
     self.__t_start = self.__yaml_data['t_start']    
     self.__temp_end = self.__yaml_data['temp_f']   
     self.__n_hydro = self.__yaml_data['nReuseHydro']   
-    self.__alpha_s = params['alphas']
     self.__cmake_opt = self.__yaml_data['CMakeOption']
     self.__make_opt = self.__yaml_data['MakeOption']
-    self.__que = params['que']
     self.__que_opt = self.__yaml_data['QueOptions']
-    self.__recoil = params['recoil']
     self.__notification = self.__yaml_data['Notification']['OnOff']
     if self.__notification:
       self.__email = self.__yaml_data['Notification']['Email']
       print('Notification is ON. Email will be sent to', self.__email)
       print('##################')
-  def SetOutdirname(self, params):
-    outname = str(params['eCM'])+'_'+params['system']
-    if not params['system'] == 'PP':
-      outname = outname+'_'+params['centrality']+'_'+params['alphas']+'_'+params['Qsw']+'_'+str(params['recoil'])
-    if not params['hard'] == 'PythiaGun':
-      outname = outname+'_'+params['hard']
+
+
+  def SetOutdirname(self, i_tag = 0 ):
+    outname = str(self.__eCM)+'_'+self.__system
+    if not self.__system == 'PP':
+      outname = outname+'_'+self.__centrality+'_'+self.__alpha_s+'_'+self.__qsw+'_'+str(self.__recoil)
+    if not self.__hard == 'PythiaGun':
+      outname = '_'.join([outname, self.__hard, self.__tag[i_tag]])
     self.__output_dir_name = outname
 
 ########################################################################
@@ -174,6 +191,8 @@ class SetConfigurations:
   def Email(self):
     return self.__email
 
+  def Tags(self):
+    return self.__tag
 
   def ExecRunJetscape(self):
     return 'runJetscape'

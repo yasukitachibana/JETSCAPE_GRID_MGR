@@ -6,7 +6,7 @@ import set_xml
 import manage_dir as mdir
 import command as cmd
 
-def Run(i_bin,run):
+def Run(i_bin,run,i_tag):
 
   con = configs.SetConfigurations()
   print('run '+str(run))
@@ -19,7 +19,7 @@ def Run(i_bin,run):
       shutil.rmtree(build_dir)
   mdir.Mkdirs(build_dir)
   ##################
-  set_xml.SetXml(i_bin, run)
+  set_xml.SetXml(i_bin, run, i_tag)
   ##################
   command = cmd.Command(i_bin,run)
   run_command = cmd.RunCommand(command)
@@ -31,7 +31,7 @@ def Run(i_bin,run):
     print(master_command)
     print('-')
     os.system(master_command)
-    exit()
+    #exit()
   else:
     log = con.LogFilename(i_bin,run)
     err = con.ErrorFilename(i_bin,run)    
