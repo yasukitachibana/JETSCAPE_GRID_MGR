@@ -16,7 +16,7 @@ def CheckRun(i_bin,run,i_tag):
         print('*Delete' , build_dir)
         shutil.rmtree(build_dir)
       print('##################################')        
-      single_run.Run(i_bin,run)
+      single_run.Run(i_bin,run,i_tag)
       print('##################################')              
   else:
     print('--> Found. Skip.')
