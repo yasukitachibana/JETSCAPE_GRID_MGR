@@ -69,7 +69,7 @@ def SetXmlMatter(i_bin,run,q0):
   ex.EditParams('./Eloss/Matter/matter_on', 1)    
   ex.EditParams('./Eloss/Matter/Q0', q0)
   ex.EditParams('./Eloss/Matter/T0', con.TempF())  
-  ex.EditParams('./Eloss/Matter/ver_factor', '0.25')  
+  ex.EditParams('./Eloss/Matter/vir_factor', '0.25')  
   ex.EditParams('./Eloss/Matter/in_vac', 0)
   ex.EditParams('./Eloss/Matter/recoil_on', 1)
   ex.EditParams('./Eloss/Matter/broadening_on', 0)
