@@ -11,16 +11,19 @@ def CheckRun(i_bin,run,i_tag):
   parton = con.HadronListname(i_bin,run)  
   print('Check Existence of', hadron, 'and', parton)
   if (not os.path.isfile(hadron)) or (not os.path.isfile(parton)):
-      print('--> Not Found. Rerun.')
-      build_dir = con.BuildDirname(i_bin,run)
-      if os.path.isdir(build_dir):
-        print('*Delete' , build_dir)
-        shutil.rmtree(build_dir)
-      print('##################################')        
-      single_run.Run(i_bin,run,i_tag)
-      print('##################################')              
+    print('--> Not Found. Rerun.')
+    build_dir = con.BuildDirname(i_bin,run)
+    if os.path.isdir(build_dir):
+      print('*Delete' , build_dir)
+      shutil.rmtree(build_dir)
+    print('##################################')        
+    submitted = single_run.Run(i_bin,run,i_tag)
+    print('##################################') 
+    return submitted             
+
   else:
     print('--> Found. Skip.')
+    return 0
 
 def Main(params):
   main_sub.Sequence(params, CheckRun)

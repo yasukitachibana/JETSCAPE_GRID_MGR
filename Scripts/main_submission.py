@@ -17,19 +17,25 @@ def Sequence(params, run_job):
   i_bin_end = min(params['end'], con.IbinMax())
   run_total = con.RunTotal()
 
+  n_run_total = 0
   print( '##################')
   for i_tag, tag in enumerate(con.Tags()):
+    n_run_tag = 0
     print(i_tag, ': ', tag)
     con.SetOutdirname(i_tag)
     print( '##################')
     for i_bin in range(i_bin_start, i_bin_end):
       for run in range(0,run_total):
-        run_job(i_bin,run,i_tag)
+        submitted = run_job(i_bin,run,i_tag)
+        n_run_total = n_run_total + submitted
+        n_run_tag = n_run_tag + submitted
     print( '##################')
-    if con.Notification():
+    if con.Notification() and (not n_run_tag == 0):
       Observation()
+      n_run_total = n_run_total + 1
     print( '##################')
   print( 'Submission Ends.')
+  print( 'Total: ', n_run_total+'-jobs were submitted.')  
   print( '##################')
 
 def Observation():

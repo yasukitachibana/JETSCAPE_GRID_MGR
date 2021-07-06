@@ -42,6 +42,8 @@ def Run(i_bin,run,i_tag):
     print('-')
     os.system(qsub_command)
 
+  return 1
+
 def GetParams(argc,argvs):
   print(argvs)
   print(argc)  
