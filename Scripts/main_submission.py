@@ -3,6 +3,7 @@ import sys
 import set_configurations as configs
 import single_run
 import command as cmd
+import manage_dir as mdir
 
 def Sequence(params, run_job):
 
@@ -23,6 +24,8 @@ def Sequence(params, run_job):
     n_run_tag = 0
     print(i_tag, ': ', tag)
     con.SetOutdirname(i_tag)
+    output_dirname = con.OutputDirname()
+    mdir.DeleteEmptyFiles(output_dirname)
     print( '##################')
     for i_bin in range(i_bin_start, i_bin_end):
       for run in range(0,run_total):
@@ -37,6 +40,11 @@ def Sequence(params, run_job):
   print( 'Submission Ends.')
   print( 'Total: ', str(n_run_total)+'-jobs were submitted.')  
   print( '##################')
+
+
+
+
+
 
 def Observation():
   con = configs.SetConfigurations()
