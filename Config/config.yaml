@@ -1,7 +1,7 @@
 #############################################
 OutputDirPath:
-  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
-  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
+  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
+  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
 CodePath:
   '/wsu/tmp/YasukiAAPaper/JETSCAPE-COMP'
   #'/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
@@ -30,7 +30,7 @@ Notification:
 QueOptions:
   '-N 1 -n 1 --mem=6G -t 2-0'
 #############################################
-qhat: 1
+qhat: 0
   #0Fixed
   #1Run
   #5Q2
