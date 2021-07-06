@@ -35,7 +35,7 @@ def Sequence(params, run_job):
       n_run_total = n_run_total + 1
     print( '##################')
   print( 'Submission Ends.')
-  print( 'Total: ', n_run_total+'-jobs were submitted.')  
+  print( 'Total: ', str(n_run_total)+'-jobs were submitted.')  
   print( '##################')
 
 def Observation():
