@@ -13,20 +13,19 @@ def Write(input, output,i_bin=''):
   print('merge', input)
   print('-->', output)
   command = 'cat {} > {}'.format(input,output)
-  run_command = cmd.RunCommand(command)
-  master_command = cmd.MasterCommand(run_command)
-
+  
   if con.Que() == 'no_que' or con.Que() == 'test':
     print('no que mode')
     print('Submission, Main Command')
-    print(master_command)
+    print(command)
     print('-')
     os.system(command)
   else:
-    pass
     log = con.LogFilename(i_bin,'M')
     err = con.ErrorFilename(i_bin,'M')    
-    job = con.Jobname(i_bin,'M')    
+    job = con.Jobname(i_bin,'M')
+    run_command = cmd.RunCommand(command)
+    master_command = cmd.MasterCommand(run_command)    
     qsub_command = cmd.QsubCommand(master_command, job, log, err)    
     print('Submission, Que:', con.Que())
     print(qsub_command)
@@ -44,8 +43,8 @@ def Merge():
   for i_tag, tag in enumerate(con.Tags()):
     print(i_tag, ': ', tag)
     con.SetOutdirname(i_tag)
-    print(con.MergedDirname())
-    #mdir.Mkdirs(con.MergedDirname())
+    #print(con.MergedDirname())
+    mdir.Mkdirs(con.MergedDirname())
     print( '------------------')
     for i_bin in range(i_bin_start, i_bin_end):
       hadron = con.HadronListname(i_bin,'*')
