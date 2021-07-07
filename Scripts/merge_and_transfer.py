@@ -68,12 +68,12 @@ def Main(params):
   con = configs.SetConfigurations()
   con.NotificationOff()
   ##==========================
-  # n_run_total = main_sub.Sequence(params, function)
-  # print( 'Total: ', str(n_run_total)+'-jobs are incompleted.') 
-  # if n_run_total > 0:
-  #   print( '--> Exit.') 
-  #   exit()
-  # print( '##################')
+  n_run_total = main_sub.Sequence(params, function)
+  print( 'Total: ', str(n_run_total)+'-jobs are incompleted.') 
+  if n_run_total > 0:
+    print( '--> Exit.') 
+    exit()
+  print( '##################')
   ##==========================
   Merge()
 
