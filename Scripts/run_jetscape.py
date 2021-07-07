@@ -23,12 +23,15 @@ class Base:
       self.__core_function = single_run.Run
       self.__function = self.Function
     elif self.__mode == 'merge and transfer':
-      self.__core_function = self.PrintMode
+      self.__core_function = self.ReturnOne
       self.__function = self.Function
-
 
   def GetFunction(self):
     return self.__function
+
+  def ReturnOne(self,i_bin,run,i_tag):
+    print('Merge Mode. No Run')
+    return 1
 
   def PrintMode(self,i_bin,run,i_tag):
     print(self.__mode, i_bin,run,i_tag)
@@ -56,10 +59,14 @@ class Base:
 
 
 def Main(params):
-  #base = Base('check and run')
-  base = Base('merge and transfer')  
+  main_sub.Init(params)
+  base = Base('check and run')
   function = base.GetFunction()
-  main_sub.Sequence(params, function)
+  n_run_total = main_sub.Sequence(params, function)
+  print( 'Submission Ends.')
+  print( 'Total: ', str(n_run_total)+'-jobs were submitted.')  
+  print( '##################')
+
 
 if __name__ == '__main__':
   argvs = sys.argv

@@ -8,11 +8,6 @@ import manage_dir as mdir
 def Sequence(params, run_job):
 
   con = configs.SetConfigurations()
-  if params['que'] == 'test':
-    yaml_file = '../Config/test.yaml'
-  else:
-    yaml_file = '../Config/config.yaml'
-  con.InitConfigs(os.getcwd(), yaml_file, params)
 
   i_bin_start = params['start']
   i_bin_end = min(params['end'], con.IbinMax())
@@ -37,10 +32,7 @@ def Sequence(params, run_job):
       Observation()
       n_run_total = n_run_total + 1
     print( '##################')
-  print( 'Submission Ends.')
-  print( 'Total: ', str(n_run_total)+'-jobs were submitted.')  
-  print( '##################')
-
+  return n_run_total
 
 
 
@@ -66,8 +58,22 @@ def Observation():
   else:
     os.system(qsub_command)
 
+
+def Init(params):
+  con = configs.SetConfigurations()
+  if params['que'] == 'test':
+    yaml_file = '../Config/test.yaml'
+  else:
+    yaml_file = '../Config/config.yaml'
+  con.InitConfigs(os.getcwd(), yaml_file, params)
+
 def Main(params):
-  Sequence(params, single_run.Run)
+  Init(params)
+  n_run_total = Sequence(params, single_run.Run)
+
+  print( 'Submission Ends.')
+  print( 'Total: ', str(n_run_total)+'-jobs were submitted.')  
+  print( '##################')
 
 def GetParams(argc,argvs):
   print(argvs)

@@ -1,4 +1,5 @@
 #Singleton Pattern
+from posixpath import abspath
 import threading
 from typing import Awaitable
 import yaml
@@ -13,6 +14,7 @@ class SetConfigurations:
   __pt_hat_bins = []
   __script_dir = ''
   __output_dir_path = ''
+  __merged_file_dir_path = ''
   __code_path = ''
   __original_xml = ''
   __master_xml = ''
@@ -33,13 +35,13 @@ class SetConfigurations:
   __make_opt = ''
   __que = ''
   __que_opt = ''
-  __notification = ''
   __email = ''
   __recoil = 0
   __tag = []
   __system = ''
   __centrality = ''
   
+  notification = ''
 
   def __init__(self):
     pass
@@ -83,6 +85,7 @@ class SetConfigurations:
     
     self.__n_events = self.__yaml_data['nEvents']
     self.__output_dir_path = self.__yaml_data['OutputDirPath']
+    self.__merged_file_dir_path = self.__yaml_data['MergedFileDirPath']
     self.__code_path = self.__yaml_data['CodePath']
     self.__original_xml = os.path.join(self.__code_path, self.__yaml_data['OriginalUserXml'][self.__pp_or_AA])
     self.__master_xml = os.path.join(self.__code_path, self.__yaml_data['MasterXml'])
@@ -97,8 +100,8 @@ class SetConfigurations:
     self.__cmake_opt = self.__yaml_data['CMakeOption']
     self.__make_opt = self.__yaml_data['MakeOption']
     self.__que_opt = self.__yaml_data['QueOptions']
-    self.__notification = self.__yaml_data['Notification']['OnOff']
-    if self.__notification:
+    self.notification = self.__yaml_data['Notification']['OnOff']
+    if self.notification:
       self.__email = self.__yaml_data['Notification']['Email']
       print('Notification is ON. Email will be sent to', self.__email)
       print('##################')
@@ -186,7 +189,21 @@ class SetConfigurations:
     return self.__recoil
 
   def Notification(self):
-    return self.__notification
+    return self.notification
+
+  def NotificationOff(self):
+    if not self.notification == 0:
+      self.notification = 0
+
+  def NotificationOn(self):
+    if self.notification == 0:
+      self.notification = 1
+
+  def NotificationToggle(self):
+    if self.notification == 0:
+      self.notification = 1
+    else:
+      self.notification = 0
 
   def Email(self):
     return self.__email
@@ -200,6 +217,9 @@ class SetConfigurations:
 #########################################
   def OutputDirname(self):
     return os.path.join(self.__output_dir_path, self.__output_dir_name)
+
+  def MergedDirname(self):
+    return os.path.join(self.__merged_file_dir_path, self.__output_dir_name)    
 
   def OutputFilename(self,i_bin,run,dat='.dat'):
     filename = 'TestOutBin{}_{}_Run{}'+dat
@@ -225,6 +245,17 @@ class SetConfigurations:
     filename = 'JetscapePartonListBin{}_{}_Run{}.out'
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
     return os.path.join(self.OutputDirname(), filename)
+#########################################
+  def MergedHadronListname(self,i_bin):
+    filename = 'JetscapeHadronListBin{}_{}.out'
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]))
+    return os.path.join(self.MergedDirname(), filename)
+
+  def MergedPartonListname(self,i_bin):
+    filename = 'JetscapePartonListBin{}_{}.out'
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]))
+    return os.path.join(self.MergedDirname(), filename)
+    
 #########################################
   def LogDirname(self):
     return os.path.join(self.OutputDirname(), 'Log')

@@ -3,6 +3,8 @@ OutputDirPath:
   '/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE_GRID_MGR/TestOutPut'
 CodePath:
   '/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
+MergedFileDirPath:
+  '/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE_GRID_MGR/TestOutPutMerged'
 #############################################
 OriginalUserXml:
   AA:

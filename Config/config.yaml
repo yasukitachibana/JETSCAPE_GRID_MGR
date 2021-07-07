@@ -5,6 +5,10 @@ OutputDirPath:
 CodePath:
   '/wsu/home/go/go54/go5410/JETSCAPE-COMP'
   #'/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
+
+MergedFileDirPath:
+  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
+  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
 #############################################
 OriginalUserXml:
   AA:
