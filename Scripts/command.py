@@ -42,11 +42,11 @@ def MergeCommand( que = 'no_que'):
 ################################################
 def CheckUpdateCommand(end_command = None):
   con = configs.SetConfigurations()
-  command = 'python update_check.py --d {} --e {} '
+  command = 'python update_check.py {} {}'
   dir = con.OutputDirname()
   email = con.Email()
   if not end_command == None:
-    command = command + ' --c ' + end_command
+    command = ' '.join([command,end_command])
   return command.format(dir,email)
 ################################################
 def RunCommand(command):
