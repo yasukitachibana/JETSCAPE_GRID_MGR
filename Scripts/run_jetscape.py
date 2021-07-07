@@ -4,6 +4,7 @@ import set_configurations as configs
 import main_submission as main_sub
 import shutil
 import single_run
+import command as cmd
 
 class Base:
     

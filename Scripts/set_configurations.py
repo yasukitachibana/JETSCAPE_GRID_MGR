@@ -22,6 +22,8 @@ class SetConfigurations:
   __n_events = 0
   __pp_or_AA = ''
   __hard = ''
+  __i_bin_start = 0
+  __i_bin_end = 0
   __eCM = 0
   __jloss = []
   __qsw = ''
@@ -64,6 +66,8 @@ class SetConfigurations:
     self.__eCM = params['eCM']
     self.__system = params['system']
     self.__hard = params['hard']
+    self.__i_bin_start = params['start']
+    self.__i_bin_end = params['end']    
     self.__que = params['que']      
 
 
@@ -139,6 +143,18 @@ class SetConfigurations:
 
   def Nevents(self):
     return self.__n_events
+
+  def System(self):
+    return self.__system
+
+  def Centrality(self):
+    return self.__centrality
+
+  def IBinStart(self):
+    return self.__i_bin_start
+
+  def IBinEnd(self):
+    return self.__i_bin_end
 
   def PPorAA(self):
     return self.__pp_or_AA

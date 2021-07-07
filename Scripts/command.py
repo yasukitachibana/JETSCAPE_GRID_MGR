@@ -31,12 +31,22 @@ def PartonListCommand(i_bin,run):
   con = configs.SetConfigurations()  
   return './FinalStatePartons '  + con.OutputFilename(i_bin,run) + ' ' + con.PartonListname(i_bin,run)
 
+def MergeCommand( que = 'no_que'):
+  con = configs.SetConfigurations()
+  command = ' '.join(['python', 'merge_and_transfer.py', con.System(), str(con.Ecm())])
+  if not con.System() == 'PP':
+    command = ' '.join([command, con.Centrality(), str(con.AlphaS()), str(con.Qsw()), str(con.Recoil())])
+  command = ' '.join([command, con.Hard(), str(con.IBinStart()), str(con.IBinEnd()), que])
+  return command
+
 ################################################
-def CheckUpdateCommand():
+def CheckUpdateCommand(end_command = None):
   con = configs.SetConfigurations()
   command = 'python update_check.py --d {} --e {} '
   dir = con.OutputDirname()
   email = con.Email()
+  if not end_command == None:
+    command = command + ' --c ' + end_command
   return command.format(dir,email)
 ################################################
 def RunCommand(command):

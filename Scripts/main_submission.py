@@ -41,7 +41,12 @@ def Sequence(params, run_job):
 def Observation():
   con = configs.SetConfigurations()
 
-  command = cmd.CheckUpdateCommand()
+  merge_command = cmd.MergeCommand('no_que')
+  merge_command = cmd.RunCommand(merge_command)
+  merge_command = cmd.MasterCommand(merge_command)
+  merge_command = merge_command.replace('"',"'")
+  print(merge_command)
+  command = cmd.CheckUpdateCommand(merge_command)
   run_command = cmd.RunCommand(command)
   master_command = cmd.MasterCommand(run_command)
 

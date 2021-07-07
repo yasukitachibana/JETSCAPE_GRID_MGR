@@ -1,17 +1,20 @@
 import os
+from posixpath import dirname
 import sys
 import subprocess
 import glob
 import time
 import datetime
 
-def UpdateCheck(dirname, email):
+def UpdateCheck(dirname, email, command):
 
   while CheckTime(dirname):
     print(datetime.datetime.now(), "| Checked ", dirname)
     time.sleep(300)
   mail_text = "No Update in " + str(dirname)
   os.system('echo ' + mail_text + ' | sendmail ' + email)
+  if not command  == None:
+    os.system(command)  
   print('Sent Notification Email. Exit.')
 
 def CheckTime(dirname):
@@ -32,25 +35,26 @@ def CheckTime(dirname):
     return False
   return True
 
-
-
-def main():
+def main(argc, argvs):
   
-  import argparse
-    
-  parser = argparse.ArgumentParser()
-  parser.add_argument("--d", type=str, default="NONE")
-  parser.add_argument("--e", type=str, default="NONE")  
-  args = parser.parse_args()
-    
-  if args.d == "NONE":
-    print( "Please specify directory name with --d [DIR_NAME]" )
+  if argc < 3:
+    print( "Please specify directory name and email address" )
+    print( "python update_check [DIR_PATH] [EMAIL]" )    
     exit()
-  if args.e == "NONE":
-    print( "Please specify email with --e [EMAIL]" )
-    exit()
-        
-  UpdateCheck(args.d,args.e)
+
+  dirname = argvs[1]
+  email = argvs[2]  
+
+  print('dirname:' , dirname)
+  print('email:' , email)  
+  command = None
+  if argc > 3:
+    command = ' '.join(argvs[3:])
+    print('command:' , command)
+
+  UpdateCheck(dirname, email, command)
   
 if __name__ == '__main__':
-  main()
+  argvs = sys.argv
+  argc = len(argvs)
+  main(argc, argvs)
