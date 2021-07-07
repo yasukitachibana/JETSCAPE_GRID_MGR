@@ -6,12 +6,32 @@ import shutil
 import single_run
 import run_jetscape as rj
 import manage_dir as mdir
+import command as cmd
 
-def Write(input, output):
+def Write(input, output,i_bin=''):
+  con = configs.SetConfigurations()
   print('merge', input)
   print('-->', output)
   command = 'cat {} > {}'.format(input,output)
-  os.system(command)
+  run_command = cmd.RunCommand(command)
+  master_command = cmd.MasterCommand(run_command)
+
+  if con.Que() == 'no_que' or con.Que() == 'test':
+    print('no que mode')
+    print('Submission, Main Command')
+    print(master_command)
+    print('-')
+    os.system(command)
+  else:
+    pass
+    log = con.LogFilename(i_bin,'M')
+    err = con.ErrorFilename(i_bin,'M')    
+    job = con.Jobname(i_bin,'M')    
+    qsub_command = cmd.QsubCommand(master_command, job, log, err)    
+    print('Submission, Que:', con.Que())
+    print(qsub_command)
+    print('-')
+    os.system(qsub_command)
 
 
 def Merge():
@@ -25,16 +45,16 @@ def Merge():
     print(i_tag, ': ', tag)
     con.SetOutdirname(i_tag)
     print(con.MergedDirname())
-    mdir.Mkdirs(con.MergedDirname())
+    #mdir.Mkdirs(con.MergedDirname())
     print( '------------------')
     for i_bin in range(i_bin_start, i_bin_end):
       hadron = con.HadronListname(i_bin,'*')
       hadron_merged = con.MergedHadronListname(i_bin)      
       parton = con.PartonListname(i_bin,'*')
       parton_merged = con.MergedPartonListname(i_bin)      
-      Write(hadron,hadron_merged)
+      Write(hadron,hadron_merged,i_bin)
       print('------')
-      Write(parton,parton_merged)        
+      Write(parton,parton_merged,i_bin)        
       print( '------------------')
   print( 'Finish Merging')
   print( '##################')
@@ -48,12 +68,12 @@ def Main(params):
   con = configs.SetConfigurations()
   con.NotificationOff()
   ##==========================
-  n_run_total = main_sub.Sequence(params, function)
-  print( 'Total: ', str(n_run_total)+'-jobs are incompleted.') 
-  if n_run_total > 0:
-    print( '--> Exit.') 
-    exit()
-  print( '##################')
+  # n_run_total = main_sub.Sequence(params, function)
+  # print( 'Total: ', str(n_run_total)+'-jobs are incompleted.') 
+  # if n_run_total > 0:
+  #   print( '--> Exit.') 
+  #   exit()
+  # print( '##################')
   ##==========================
   Merge()
 
