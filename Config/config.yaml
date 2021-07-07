@@ -1,13 +1,15 @@
 #############################################
 OutputDirPath:
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
-  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
+  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
+  '/wsu/tmp/YasukiAAPaper'
 CodePath:
   '/wsu/home/go/go54/go5410/JETSCAPE-COMP'
   #'/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
 
 MergedFileDirPath:
-  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS'
+  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData'
+  #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
 #############################################
