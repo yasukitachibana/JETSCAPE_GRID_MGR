@@ -42,7 +42,7 @@ class Base:
 
     con = configs.SetConfigurations()
     hadron = con.HadronListname(i_bin,run)
-    parton = con.HadronListname(i_bin,run)  
+    parton = con.PartonListname(i_bin,run)  
     print('Check Existence of', hadron, 'and', parton)
     if (not os.path.isfile(hadron)) or (not os.path.isfile(parton)):
       print('--> Not Found. Rerun.')
