@@ -38,7 +38,7 @@ Notification:
   Email: 'yasuki.tachibana@gmail.com'
 #############################################
 QueOptions:
-  ' --time=200:00:00 -N 1 -n 1 --mem=6G '
+  ' --time=200:00:00 -N 1 -n 1 --mem=64G '
 #############################################
 qhat: 1
   #0Fixed
