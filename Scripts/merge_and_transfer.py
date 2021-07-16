@@ -55,6 +55,8 @@ def Merge():
       print('------')
       Write(parton,parton_merged,i_bin)        
       print( '------------------')
+    chmod_cmd = 'chmod -R 777 ' + con.MergedDirname()
+    os.system(chmod_cmd)
   print( 'Finish Merging')
   print( '##################')
 
