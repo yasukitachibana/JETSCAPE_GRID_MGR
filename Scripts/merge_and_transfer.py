@@ -45,6 +45,7 @@ def Merge():
     con.SetOutdirname(i_tag)
     #print(con.MergedDirname())
     mdir.Mkdirs(con.MergedDirname())
+    chmod_cmd = 'chmod -R 777 ' + con.MergedDirname()    
     print( '------------------')
     for i_bin in range(i_bin_start, i_bin_end):
       hadron = con.HadronListname(i_bin,'*')
@@ -55,8 +56,7 @@ def Merge():
       print('------')
       Write(parton,parton_merged,i_bin)        
       print( '------------------')
-    chmod_cmd = 'chmod -R 777 ' + con.MergedDirname()
-    os.system(chmod_cmd)
+      os.system(chmod_cmd)
   print( 'Finish Merging')
   print( '##################')
 

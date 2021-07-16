@@ -54,7 +54,7 @@ def Observation():
   err = con.ObsErrorFilename()    
   job = con.ObsJobname()    
 
-  qsub_command = cmd.QsubCommand(master_command, job, log, err)    
+  qsub_command = cmd.QsubCommand(master_command, job, log, err,   ' --time=200:00:00 -N 1 -n 1 --mem=64G ')    
   print('Submission, Que:', con.Que())
   print(qsub_command)
   print('-')

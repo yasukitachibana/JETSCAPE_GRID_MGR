@@ -58,9 +58,11 @@ def MasterCommand(run_command):
   job_master = os.path.join(script_dir,'JobMaster')
   return ' '.join([job_master,script_dir,run_command])
 ################################################
-def QsubCommand(master_command, job, log, err):
+def QsubCommand(master_command, job, log, err, que_opt = None):
   con = configs.SetConfigurations()
-  head = ' '.join(['sbatch -q',con.Que(),con.QueOpt()])
+  if que_opt == None: 
+    que_opt = con.QueOpt()
+  head = ' '.join(['sbatch -q',con.Que(),que_opt])
   jobname = '--job-name {} -o {} -e {}  -- '.format(job, log, err)
   return ' '.join([head,jobname,master_command])
 ################################################
