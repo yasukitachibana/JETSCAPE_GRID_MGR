@@ -34,7 +34,7 @@ HydroFilePath:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/200GeV_{}'
 #############################################
 Notification:
-  OnOff: 0
+  OnOff: 1
   Email: 'yasuki.tachibana@gmail.com'
 #############################################
 QueOptions:
