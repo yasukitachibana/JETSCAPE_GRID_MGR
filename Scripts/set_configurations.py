@@ -41,9 +41,9 @@ class SetConfigurations:
   __recoil = 0
   __tag = []
   __system = ''
-  __centrality = ''
-  
+  __centrality = ''  
   notification = ''
+  __merge = 0
 
   def __init__(self):
     pass
@@ -108,6 +108,9 @@ class SetConfigurations:
     if self.notification:
       self.__email = self.__yaml_data['Notification']['Email']
       print('Notification is ON. Email will be sent to', self.__email)
+      print('##################')
+      self.__merge = self.__yaml_data['Notification']['Merge']
+      print('Merge Files after Notification')
       print('##################')
 
 
@@ -224,11 +227,16 @@ class SetConfigurations:
   def Email(self):
     return self.__email
 
+  def Merge(self):
+    return self.__merge
+
   def Tags(self):
     return self.__tag
 
   def ExecRunJetscape(self):
     return 'runJetscape'
+
+
 
 #########################################
   def OutputDirname(self):

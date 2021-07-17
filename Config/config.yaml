@@ -36,6 +36,7 @@ HydroFilePath:
 Notification:
   OnOff: 1
   Email: 'yasuki.tachibana@gmail.com'
+  Merge: 0
 #############################################
 QueOptions:
   ' --time=200:00:00 -N 1 -n 1 --mem=8G '

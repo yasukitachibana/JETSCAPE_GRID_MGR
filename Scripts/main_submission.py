@@ -40,12 +40,12 @@ def Sequence(params, run_job):
 
 def Observation():
   con = configs.SetConfigurations()
-
-  merge_command = cmd.MergeCommand('no_que')
-  # merge_command = cmd.RunCommand(merge_command)
-  # merge_command = cmd.MasterCommand(merge_command)
-  # merge_command = merge_command.replace('"',"'")
-  print(merge_command)
+  
+  merge_command = None
+  if con.Merge():
+    merge_command = cmd.MergeCommand('no_que')
+  print('merge: ', merge_command)
+  
   command = cmd.CheckUpdateCommand(merge_command)
   run_command = cmd.RunCommand(command)
   master_command = cmd.MasterCommand(run_command)
@@ -54,15 +54,15 @@ def Observation():
   err = con.ObsErrorFilename()    
   job = con.ObsJobname()    
 
-  qsub_command = cmd.QsubCommand(master_command, job, log, err,   ' --time=200:00:00 -N 1 -n 1 --mem=64G ')    
+  qsub_command = cmd.QsubCommand(master_command, job, log, err, ' --time=200:00:00 -N 1 -n 1 --mem=64G ')    
   print('Submission, Que:', con.Que())
   print(qsub_command)
   print('-')
+
   if con.Que() == 'test':
     print('test mode.')
   else:
     os.system(qsub_command)
-
 
 def Init(params):
   con = configs.SetConfigurations()
