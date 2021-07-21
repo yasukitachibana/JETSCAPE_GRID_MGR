@@ -1,7 +1,7 @@
 #############################################
 OutputDirPath:
-  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat'
-  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'  
+  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat'
+  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
   #'/wsu/tmp/YasukiAAPaper'
 CodePath:
@@ -9,10 +9,10 @@ CodePath:
   #'/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
 
 MergedFileDirPath:
-  #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat'
+  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS'
-  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS'  
+  #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
 #############################################
@@ -41,7 +41,7 @@ Notification:
 QueOptions:
   ' --time=200:00:00 -N 1 -n 1 --mem=8G '
 #############################################
-qhat: 1
+qhat: 5
   #0Fixed
   #1Run
   #5Q2
