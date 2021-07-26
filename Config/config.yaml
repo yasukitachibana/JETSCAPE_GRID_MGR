@@ -1,6 +1,6 @@
 #############################################
 OutputDirPath:
-  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat_Sub'
+  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
   #'/wsu/tmp/YasukiAAPaper'
@@ -51,7 +51,7 @@ temp_f: '0.16'
 JLoss:
   ['Matter','LBT']
 #############################################
-run: 200
+run: 10
 nEvents: 4800
 #############################################
 nReuseHydro: 12
