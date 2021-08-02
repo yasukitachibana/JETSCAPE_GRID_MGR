@@ -11,10 +11,10 @@ CodePath:
 MergedFileDirPath:
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData'
-  #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS'
+  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS/Tc_160_160'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
-  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
+  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
 #############################################
 OriginalUserXml:
   AA:
