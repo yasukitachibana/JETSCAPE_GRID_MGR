@@ -1,17 +1,17 @@
 #############################################
 OutputDirPath:
-  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat'
+  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'  
-  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
+  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
   #'/wsu/tmp/YasukiAAPaper'
 CodePath:
   '/wsu/home/go/go54/go5410/JETSCAPE-COMP'
   #'/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
 
 MergedFileDirPath:
-  #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat'
+  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData'
-  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS/Tc_160_160'
+  #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS/Tc_160_160'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
@@ -36,12 +36,12 @@ HydroFilePath:
 Notification:
   OnOff: 1
   Email: 'yasuki.tachibana@gmail.com'
-  Merge: 1
+  Merge: 0
 #############################################
 QueOptions:
   ' --time=200:00:00 -N 1 -n 1 --mem=8G '
 #############################################
-qhat: 0
+qhat: 5
   #0Fixed
   #1Run
   #5Q2
