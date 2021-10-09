@@ -44,6 +44,7 @@ class SetConfigurations:
   __centrality = ''  
   notification = ''
   __merge = 0
+  __hydro_type = {}
 
   def __init__(self):
     pass
@@ -79,6 +80,7 @@ class SetConfigurations:
       self.__alpha_s = params['alphas']      
       self.__qsw = params['Qsw']     
       self.__recoil = params['recoil']      
+      self.__hydro_type = self.__yaml_data['HydroType']      
       self.__hydro_file_path = self.__yaml_data['HydroFilePath'][self.__eCM].format(self.__centrality)
 
 
@@ -188,6 +190,9 @@ class SetConfigurations:
 
   def Nhydro(self):
     return self.__n_hydro
+
+  def HydroType(self):
+    return self.__hydro_type
 
   def HydroFilePath(self):
     return self.__hydro_file_path

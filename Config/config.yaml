@@ -25,9 +25,13 @@ OriginalUserXml:
 MasterXml:
     'config/jetscape_master.xml'
 #############################################
+HydroType: {"hydro_type": 4, "boost_invariant_": 1} #for 3D
+  #{} #for 2D
+
 HydroFilePath:
   5020:
-    '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/5TeV_{}'
+    '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/3DHydro_5TeV_{}' #3D
+    #'/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/5TeV_{}' #2D
   2760:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/2760GeV-{}'
   200:
@@ -51,10 +55,12 @@ temp_f: '0.16'
 JLoss:
   ['Matter','LBT']
 #############################################
-run: 10
-nEvents: 4800
+run: 24
+nEvents: 1000 # for 3D
+  #4800 #for 2D
 #############################################
-nReuseHydro: 12
+nReuseHydro: 2000 # for 3D (> nEvents)
+  #12 #for 2D
 #############################################
 CMakeOption: ''
 MakeOption: ''
