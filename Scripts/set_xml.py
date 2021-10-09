@@ -40,13 +40,12 @@ def SetXmlMediumInput(i_bin,run):
   ex.EditParams('./Hydro/hydro_from_file/name', 'Hydro from file ')   
   ex.EditParams('./Hydro/hydro_from_file/read_in_multiple_hydro', 1)   
   ex.EditParams('./Hydro/hydro_from_file/hydro_files_folder', con.HydroFilePath()) 
-
+  ##
   hydro_type = con.HydroType()
   for h_type in hydro_type:
     xpath = './Hydro/hydro_from_file/' + h_type[0]
     ex.EditParams(xpath, h_type[1]) 
-  exit()
-
+  ####################################
 
 
 def SetXmlMedium(i_bin,run):
