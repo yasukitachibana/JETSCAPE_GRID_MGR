@@ -43,10 +43,8 @@ def SetXmlMediumInput(i_bin,run):
 
   hydro_type = con.HydroType()
   for h_type in hydro_type:
-
-    tag = './Hydro/hydro_from_file/' + h_type[0]
-
-    print(tag,h_type[1])
+    xpath = './Hydro/hydro_from_file/' + h_type[0]
+    ex.EditParams(xpath, h_type[1]) 
   exit()
 
 
