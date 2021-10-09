@@ -44,7 +44,7 @@ class SetConfigurations:
   __centrality = ''  
   notification = ''
   __merge = 0
-  __hydro_type = {}
+  __hydro_type = [[]]
 
   def __init__(self):
     pass
