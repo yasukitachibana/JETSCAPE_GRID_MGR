@@ -1,2 +1,2 @@
 # JETSCAPE_GRID_MGR
-Test
+```python run_jetscape.py```

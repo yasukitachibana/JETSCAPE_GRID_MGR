@@ -26,6 +26,7 @@ class SetConfigurations:
   __i_bin_end = 0
   __eCM = 0
   __jloss = []
+  __matter_broadening = 0
   __qsw = ''
   __t_start = ''
   __temp_end = ''  
@@ -99,6 +100,7 @@ class SetConfigurations:
     self.__pt_hat_bins = self.__yaml_data['pthat'][self.__hard][self.__eCM]
     self.__i_bin_max = len(self.__pt_hat_bins)
     self.__jloss = self.__yaml_data['JLoss']
+    self.__matter_broadening = self.__yaml_data['MatterBroadening']
     self.__qhat = self.__yaml_data['qhat']
     self.__t_start = self.__yaml_data['t_start']    
     self.__temp_end = self.__yaml_data['temp_f']   
@@ -172,6 +174,9 @@ class SetConfigurations:
 
   def JLoss(self):
     return self.__jloss
+
+  def MatterBroadening(self):
+    return self.__matter_broadening
 
   def AlphaS(self):
     return self.__alpha_s
