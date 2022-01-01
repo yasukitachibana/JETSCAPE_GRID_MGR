@@ -1,37 +1,41 @@
 #############################################
 OutputDirPath:
-  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat_3D'
+  '/wsu/tmp/YasukiAAPaper/BroadeningTest'
+  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat_3D'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
   #'/wsu/tmp/YasukiAAPaper'
 CodePath:
-  '/wsu/home/go/go54/go5410/JETSCAPE-COMP'
+  #'/wsu/home/go/go54/go5410/JETSCAPE-COMP'
+  '/wsu/home/go/go54/go5410/JETSCAPE_B'
   #'/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
 
 MergedFileDirPath:
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS/Tc_160_160'
-  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS'  
+  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_3D'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
 #############################################
 OriginalUserXml:
   AA:
-    'config/jetscape_user_pbpb_grid.xml'
+    'config/jetscape_user_br_test.xml'
+    #'config/jetscape_user_pbpb_grid.xml'
     #'config/jetscape_user.xml'
   PP:
     'config/jetscape_user_PP19.xml'
 MasterXml:
     'config/jetscape_master.xml'
 #############################################
-HydroType: [["hydro_type", 4], ["boost_invariant_", 0]] #for 3D
-  #{} #for 2D
+HydroType: 
+  #[["hydro_type", 4], ["boost_invariant_", 0]] #for 3D
+  {} #for 2D
 
 HydroFilePath:
   5020:
-    '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/3DHydro_5TeV_{}' #3D
-    #'/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/5TeV_{}' #2D
+    #'/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/3DHydro_5TeV_{}' #3D
+    '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/5TeV_{}' #2D
   2760:
     '/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/2760GeV-{}'
   200:
