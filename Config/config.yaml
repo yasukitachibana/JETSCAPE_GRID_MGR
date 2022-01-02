@@ -60,12 +60,14 @@ JLoss:
   ['Matter','LBT']
 MatterBroadening: 1
 #############################################
-run: 24
-nEvents: 1000 # for 3D
-  #4800 #for 2D
+run: 
+  10
+#24
+nEvents: #1000 # for 3D
+  4800 #for 2D
 #############################################
-nReuseHydro: 2000 # for 3D (> nEvents)
-  #12 #for 2D
+nReuseHydro: #2000 # for 3D (> nEvents)
+  12 #for 2D
 #############################################
 CMakeOption: ''
 MakeOption: ''
