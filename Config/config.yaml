@@ -5,7 +5,7 @@ OutputDirPath:
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat_3D'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
-  '/wsu/tmp/YasukiEvents/MATTER_ALONE'
+  '/wsu/tmp/YasukiEvents/Q2qhat'
 CodePath:
   '/wsu/home/go/go54/go5410/JETSCAPE-COMP'
   #'/wsu/home/go/go54/go5410/JETSCAPE_B'
@@ -81,7 +81,8 @@ MakeOption: ''
 #############################################
 pthat:
   PGun:
-    5020: [[100], [120], [140], [160], [180], [200], [250], [300], [350], [400], [450], [500], [1000], [1500] ]
+    5020: [[100], [120], [140], [160], [180], [200], [250], [300], [350]]
+    #, [400], [450], [500], [1000], [1500] ]
     2760: [[100], [120], [140], [160], [180], [200], [250], [300], [350], [400], [450], [500] ]
     200: [[10], [15], [20], [25], [30], [35], [40], [45], [50], [60], [80], [100] ]
 
