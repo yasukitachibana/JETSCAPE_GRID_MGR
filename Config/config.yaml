@@ -1,14 +1,14 @@
 #############################################
 OutputDirPath:
-  '/wsu/tmp/YasukiAAPaper/LBTChangeTest'
+  #'/wsu/tmp/YasukiAAPaper/LBTChangeTest'
   #'/wsu/tmp/YasukiAAPaper/BroadeningTest'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat_3D'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
-  #'/wsu/tmp/YasukiAAPaper'
+  '/wsu/tmp/YasukiAAPaper'
 CodePath:
-  #'/wsu/home/go/go54/go5410/JETSCAPE-COMP'
-  '/wsu/home/go/go54/go5410/JETSCAPE_B'
+  '/wsu/home/go/go54/go5410/JETSCAPE-COMP'
+  #'/wsu/home/go/go54/go5410/JETSCAPE_B'
   #'/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
 
 MergedFileDirPath:
@@ -16,7 +16,7 @@ MergedFileDirPath:
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS/Tc_160_160'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_3D'  
-  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat_No2GeVCutLBT'
+  #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat_No2GeVCutLBT'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
 #############################################
@@ -64,16 +64,17 @@ JLoss:
 MatterBroadening: 0
 #############################################
 run: 
-  480 # for 1 bin
-#24
+  #480 # for 1 bin
+  #24
+  10
 nEvents: #1000 # for 3D
-#  4800 #for 2D
-  100 # for 1 bin
+  4800 #for 2D
+  #100 # for 1 bin
 
 #############################################
 nReuseHydro: #2000 # for 3D (> nEvents)
-#  12 #for 2D
-  10 # for 1 bin
+  12 #for 2D
+  #10 # for 1 bin
 #############################################
 CMakeOption: ''
 MakeOption: ''
