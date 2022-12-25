@@ -156,7 +156,7 @@ def SetXmlPPjet(i_bin,run):
   ###################################
   ex.EditParams('./Eloss/Matter/Q0', '1.0')
   ex.EditParams('./Eloss/Matter/in_vac', 1)
-  ex.EditParams('./Eloss/Matter/ver_factor', '0.25')
+  ex.EditParams('./Eloss/Matter/vir_factor', '0.25')
   ex.EditParams('./Eloss/Matter/recoil_on', 1)
   ex.EditParams('./Eloss/Matter/broadening_on', 0)
   ex.EditParams('./Eloss/Matter/brick_med', 0)
@@ -236,6 +236,8 @@ def SetXmlGeneral(i_bin,run):
   ###########################################
   ex.EditParams('./JetScapeWriterAscii','on')
   ex.EditParams('./outputFilename',output_filename)  
+  ex.EditParams('./JetScapeWriterFinalStatePartonsAscii','off')
+  ex.EditParams('./JetScapeWriterFinalStateHadronsAscii','off')
   ex.EditParams('./vlevel',0)
   ex.EditParams('./nEvents',con.Nevents())
   ex.EditParams('./nEvents_printout',1)
