@@ -10,6 +10,8 @@ class SetConfigurations:
   _lock = threading.Lock()
   __yaml_data = None
   __run_total = 0
+  __run_numbers = []
+  __random_random_seed = 0
   __i_bin_max = 0
   __pt_hat_bins = []
   __script_dir = ''
@@ -96,7 +98,9 @@ class SetConfigurations:
     self.__code_path = self.__yaml_data['CodePath']
     self.__original_xml = os.path.join(self.__code_path, self.__yaml_data['OriginalUserXml'][self.__pp_or_AA])
     self.__master_xml = os.path.join(self.__code_path, self.__yaml_data['MasterXml'])
-    self.__run_total = self.__yaml_data['run']     
+    self.__run_numbers = self.__yaml_data['run']
+    self.__run_total = abs(self.__run_numbers[1]-self.__run_numbers[0])
+    self.__random_random_seed = self.__yaml_data['RandomRandomSeed']         
     self.__pt_hat_bins = self.__yaml_data['pthat'][self.__hard][self.__eCM]
     self.__i_bin_max = len(self.__pt_hat_bins)
     self.__jloss = self.__yaml_data['JLoss']
@@ -136,8 +140,14 @@ class SetConfigurations:
   def MasterXml(self):
     return self.__master_xml
 
+  def RunNumbers(self):
+    return self.__run_numbers
+
   def RunTotal(self):
     return self.__run_total
+
+  def RandomRandomSeed(self):
+    return self.__random_random_seed
 
   def ScriptDir(self):
     return self.__script_dir

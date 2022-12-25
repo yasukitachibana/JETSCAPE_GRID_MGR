@@ -11,7 +11,7 @@ def Sequence(params, run_job):
 
   i_bin_start = params['start']
   i_bin_end = min(params['end'], con.IbinMax())
-  run_total = con.RunTotal()
+  run_num = con.RunNumbers()
 
   n_run_total = 0
   print( '##################')
@@ -23,7 +23,7 @@ def Sequence(params, run_job):
     mdir.DeleteEmptyFiles(output_dirname)
     print( '##################')
     for i_bin in range(i_bin_start, i_bin_end):
-      for run in range(0,run_total):
+      for run in range(run_num[0],run_num[1]):
         submitted = run_job(i_bin,run,i_tag)
         n_run_total = n_run_total + submitted
         n_run_tag = n_run_tag + submitted

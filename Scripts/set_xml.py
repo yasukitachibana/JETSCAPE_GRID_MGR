@@ -225,7 +225,12 @@ def SetXmlGeneral(i_bin,run):
   ex = exml.EditXml()
 
   output_filename = con.OutputFilename(i_bin,run,dat='')
-  random_int = random.randint(0,con.Nevents())
+
+  random_int = run
+  if con.RandomRandomSeed() == 1:
+    random_int = 0
+  elif con.RandomRandomSeed() == 2:
+    random_int = random.randint(1,1000*con.RunTotal()*con.Nevents()+1)
 
   ex.DeleteElement('./JetScapeWriterHepMC')
   ###########################################
