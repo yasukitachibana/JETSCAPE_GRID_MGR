@@ -5,19 +5,19 @@ OutputDirPath:
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS_Q2qhat_3D'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'  
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
-  '/wsu/tmp/YasukiEvents/Q2qhat'
+  '/wsu/tmp/YasukiEvents/MATTER_LBT_RunningAlphaS'  
 CodePath:
   '/wsu/home/go/go54/go5410/JETSCAPE-COMP'
   #'/wsu/home/go/go54/go5410/JETSCAPE_B'
   #'/Users/yasukitachibana/GoogleDrive/Codes/JETSCAPE'
 
 MergedFileDirPath:
-  '/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat'
+  #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_FixedAlphaS/Tc_160_160'
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_3D'  
   #'/wsu/home/go/go54/go5410/maj-shen/AAPaperData/MATTER_LBT_RunningAlphaS_Q2qhat_No2GeVCutLBT'
-  #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
+  '/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS'
   #'/wsu/tmp/YasukiAAPaper/MATTER_LBT_FixedAlphaS'
 #############################################
 OriginalUserXml:
@@ -52,7 +52,7 @@ Notification:
 QueOptions:
   ' --time=200:00:00 -N 1 -n 1 --mem=8G '
 #############################################
-qhat: 5
+qhat: 1
   #0Fixed
   #1Run
   #5Q2
@@ -81,8 +81,7 @@ MakeOption: ''
 #############################################
 pthat:
   PGun:
-    5020: [[100], [120], [140], [160], [180], [200], [250], [300], [350]]
-    #, [400], [450], [500], [1000], [1500] ]
+    5020: [[100], [120], [140], [160], [180], [200], [250], [300], [350], [400], [450], [500], [1000], [1500] ]
     2760: [[100], [120], [140], [160], [180], [200], [250], [300], [350], [400], [450], [500] ]
     200: [[10], [15], [20], [25], [30], [35], [40], [45], [50], [60], [80], [100] ]
 
