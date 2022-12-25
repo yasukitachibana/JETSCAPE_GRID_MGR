@@ -86,7 +86,7 @@ def GetParams(argc,argvs):
 
   if argc < 2:
     print('Please Input Options')
-    print('\t$python main_submission.py PbPb [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PbPb (or AuAu. etc.) [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     print('Please Input Options')
     print('\t$python main_submission.py PP [eCM] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     exit()
@@ -98,7 +98,7 @@ def GetParams(argc,argvs):
 
   if argvs[1] != 'PP' and argc < 11:
     print('Please Input Options')
-    print('\t$python main_submission.py PbPb [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PbPb (or AuAu. etc.) [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
     exit()
 
   print( '##################')
