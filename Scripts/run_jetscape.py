@@ -2,6 +2,7 @@ import os
 import sys
 import set_configurations as configs
 import main_submission as main_sub
+import extract_sigma_from_output as ext_sig
 import shutil
 import single_run
 import command as cmd
@@ -26,12 +27,16 @@ class Base:
     elif self.__mode == 'merge and transfer':
       self.__core_function = self.ReturnOne
       self.__function = self.Function
+    elif self.__mode == 'generate cross section file(s)':
+      self.__core_function = ext_sig.ExtractSigma
+      self.__function = self.Function
+
 
   def GetFunction(self):
     return self.__function
 
   def ReturnOne(self,i_bin,run,i_tag):
-    print('Merge Mode. No Run')
+    print('No-Run mode')
     return 1
 
   def PrintMode(self,i_bin,run,i_tag):

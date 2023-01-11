@@ -39,6 +39,10 @@ def MergeCommand( que = 'no_que'):
   command = ' '.join([command, con.Hard(), str(con.IBinStart()), str(con.IBinEnd()), que])
   return command
 
+def ExtractSigmaCommand(i_bin,run):
+  return ''
+
+
 ################################################
 def CheckUpdateCommand(end_command = None):
   con = configs.SetConfigurations()
