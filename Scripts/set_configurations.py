@@ -304,18 +304,18 @@ class SetConfigurations:
   def LogDirname(self):
     return os.path.join(self.OutputDirname(), 'Log')
 
-  def ErrorFilename(self,i_bin,run):
-    filename = 'ErrorBin{}_{}_Run{}.txt'
+  def ErrorFilename(self,i_bin,run,extra_tag=''):
+    filename = 'Error'+extra_tag+'Bin{}_{}_Run{}.txt'
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
     return os.path.join(self.LogDirname(), filename)
 
-  def LogFilename(self,i_bin,run):
-    filename = 'LogBin{}_{}_Run{}.txt'
+  def LogFilename(self,i_bin,run,extra_tag=''):
+    filename = 'Log'+extra_tag+'Bin{}_{}_Run{}.txt'
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
     return os.path.join(self.LogDirname(), filename)
 #########################################
-  def Jobname(self,i_bin,run):
-    name = 'RunBin{}_{}_Run{}'
+  def Jobname(self,i_bin,run,extra_tag=''):
+    name = extra_tag+'RunBin{}_{}_Run{}'
     return name.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
 #########################################
   def ObsErrorFilename(self):
