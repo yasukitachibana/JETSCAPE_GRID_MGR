@@ -39,8 +39,8 @@ def MergeCommand( que = 'no_que'):
   command = ' '.join([command, con.Hard(), str(con.IBinStart()), str(con.IBinEnd()), que])
   return command
 
-def ExtractSigmaCommand(output,sigmafile):
-  return 'python create_sigma_file.py {} {}'.format(output,sigmafile)
+def ExtractSigmaCommand(output,sigmafile,run_start,run_end,mergedsigmafile):
+  return 'python create_sigma_file.py {} {} {} {} {}'.format(output,sigmafile,run_start,run_end,mergedsigmafile)
 
 
 ################################################

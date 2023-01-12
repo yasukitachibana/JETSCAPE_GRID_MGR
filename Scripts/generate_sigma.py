@@ -1,48 +1,57 @@
-# import os
+import os
 import sys
 import set_configurations as configs
 import main_submission as main_sub
-# import shutil
-# import single_run
 import run_jetscape as rj
-# import manage_dir as mdir
-# import command as cmd
 
-# def Write(input, output,i_bin=''):
-#   con = configs.SetConfigurations()
-#   print('merge', input)
-#   print('-->', output)
-#   command = 'cat {} > {}'.format(input,output)
-  
-#   if con.Que() == 'no_que' or con.Que() == 'test':
-#     print('no que mode')
-#     print('Submission, Main Command')
-#     print(command)
-#     print('-')
-#     os.system(command)
-#   else:
-#     log = con.LogFilename(i_bin,'M')
-#     err = con.ErrorFilename(i_bin,'M')    
-#     job = con.Jobname(i_bin,'M')
-#     run_command = cmd.RunCommand(command)
-#     master_command = cmd.MasterCommand(run_command)    
-#     qsub_command = cmd.QsubCommand(master_command, job, log, err)    
-#     print('Submission, Que:', con.Que())
-#     print(qsub_command)
-#     print('-')
-#     os.system(qsub_command)
-
+import command as cmd
 
 def GenerateSigmaMain():
   print( 'Start Generating Sigma Files')
   con = configs.SetConfigurations()
+  run_num = con.RunNumbers()
 
   i_bin_start = params['start']
   i_bin_end = min(params['end'], con.IbinMax())
   print('bin:', i_bin_start,'-',i_bin_end)
 
   for i_bin in range(i_bin_start, i_bin_end):
-    
+    output = con.OutputFilename(i_bin,{})
+    sigmafile = con.SigmaFilename(i_bin,{})
+    run_start = run_num[0]
+    run_end = run_num[1]
+    mergedsigmafile = con.MergedSigmaFilename(i_bin)
+    print(output,sigmafile,mergedsigmafile)
+    print(run_start,run_end)
+    ##################
+    command = cmd.ExtractSigmaCommand(output,sigmafile,run_start,run_end,mergedsigmafile)
+    run_command = cmd.RunCommand(command)
+    master_command = cmd.MasterCommand(run_command)
+    print(command)
+
+  ##################
+  if con.Que() == 'test':
+    print('test mode')
+    print('Submission, Main Command')
+    print(master_command)
+    print('-')
+    os.system(master_command)
+    #exit()
+  else:
+    run_info = str(run_start)+'-'+str(run_end)
+    log = con.LogFilename(i_bin,run_info,'Sigma')
+    err = con.ErrorFilename(i_bin,run_info,'Sigma')    
+    job = con.Jobname(i_bin,run_info,'Sigma')    
+    qsub_command = cmd.QsubCommand(master_command, job, log, err)    
+    print('Submission, Que:', con.Que())
+    print(qsub_command)
+    print('-')
+    os.system(qsub_command)
+
+  
+  print( '##################')
+
+
 #       hadron = con.HadronListname(i_bin,'*')
 #       hadron_merged = con.MergedHadronListname(i_bin)      
 #       parton = con.PartonListname(i_bin,'*')

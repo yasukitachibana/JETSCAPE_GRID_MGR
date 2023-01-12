@@ -273,6 +273,11 @@ class SetConfigurations:
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
     return os.path.join(self.OutputDirname(), filename)
 
+  def SigmaFilename(self,i_bin,run,dat='.dat'):
+    filename = 'SigmaHardBin{}_{}_Run{}'+dat
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
+    return os.path.join(self.OutputDirname(), filename)
+
   def XmlFilename(self,i_bin,run):
     filename = 'SettingsBin{}_{}_Run{}.xml'
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]),str(run) )
@@ -302,7 +307,12 @@ class SetConfigurations:
     filename = 'JetscapePartonListBin{}_{}.out'
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]))
     return os.path.join(self.MergedDirname(), filename)
-    
+
+  def MergedSigmaFilename(self,i_bin):
+    filename = 'SigmaHardBin{}_{}.out'
+    filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]))
+    return os.path.join(self.MergedDirname(), filename)
+
 #########################################
   def LogDirname(self):
     return os.path.join(self.OutputDirname(), 'Log')
