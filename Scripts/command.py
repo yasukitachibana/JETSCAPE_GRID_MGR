@@ -40,7 +40,7 @@ def MergeCommand( que = 'no_que'):
   return command
 
 def ExtractSigmaCommand(output,sigmafile):
-  return ''
+  return 'python create_sigma_file.py --read {} --write {}'.format(output,sigmafile)
 
 
 ################################################

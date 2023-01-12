@@ -15,9 +15,8 @@ def ExtractSigma(i_bin,run,i_tag):
   sigmafile = ''
   ##################
   command = cmd.ExtractSigmaCommand(output,sigmafile)
-  
-  # run_command = cmd.RunCommand(command)
-  # master_command = cmd.MasterCommand(run_command)
+  run_command = cmd.RunCommand(command)
+  master_command = cmd.MasterCommand(run_command)
   # ##################
   # if con.Que() == 'test':
   #   print('test mode')
