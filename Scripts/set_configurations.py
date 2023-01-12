@@ -232,6 +232,9 @@ class SetConfigurations:
 
   def NotificationOff(self):
     if not self.notification == 0:
+      print('###############################')      
+      print('# Notification is turned OFF. #')
+      print('###############################')            
       self.notification = 0
 
   def NotificationOn(self):

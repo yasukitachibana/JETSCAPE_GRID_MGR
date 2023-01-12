@@ -33,21 +33,16 @@ import run_jetscape as rj
 #     os.system(qsub_command)
 
 
-# def Merge():
-#   print( 'Start Merging')
-#   con = configs.SetConfigurations()
+def GenerateSigmaMain():
+  print( 'Start Generating Sigma Files')
+  con = configs.SetConfigurations()
 
-#   i_bin_start = params['start']
-#   i_bin_end = min(params['end'], con.IbinMax())
+  i_bin_start = params['start']
+  i_bin_end = min(params['end'], con.IbinMax())
+  print('bin:', i_bin_start,'-',i_bin_end)
 
-#   for i_tag, tag in enumerate(con.Tags()):
-#     print(i_tag, ': ', tag)
-#     con.SetOutdirname(i_tag)
-#     #print(con.MergedDirname())
-#     mdir.Mkdirs(con.MergedDirname())
-#     chmod_cmd = 'chmod -R 777 ' + con.MergedDirname()    
-#     print( '------------------')
-#     for i_bin in range(i_bin_start, i_bin_end):
+  for i_bin in range(i_bin_start, i_bin_end):
+    
 #       hadron = con.HadronListname(i_bin,'*')
 #       hadron_merged = con.MergedHadronListname(i_bin)      
 #       parton = con.PartonListname(i_bin,'*')
@@ -73,10 +68,10 @@ def Main(params):
   print( 'Total: ', str(n_run_total)+'-jobs are incompleted.') 
   if n_run_total > 0:
     print( '--> Exit.') 
-    exit()
+    #exit()
   print( '##################')
   ##==========================
-
+  GenerateSigmaMain()
 
 
 if __name__ == '__main__':

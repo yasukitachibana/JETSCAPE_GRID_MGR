@@ -2,7 +2,6 @@ import os
 import sys
 import set_configurations as configs
 import main_submission as main_sub
-import extract_sigma_from_output as ext_sig
 import shutil
 import single_run
 import command as cmd
@@ -28,7 +27,7 @@ class Base:
       self.__core_function = self.ReturnOne
       self.__function = self.Function
     elif self.__mode == 'generate cross section file(s)':
-      self.__core_function = ext_sig.ExtractSigma
+      self.__core_function = self.ReturnOne
       self.__function = self.Function
 
 
