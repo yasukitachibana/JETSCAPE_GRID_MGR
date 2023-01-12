@@ -71,5 +71,5 @@ def QsubCommand(master_command, job, log, err, que_opt = None):
   return ' '.join([head,jobname,master_command])
 ################################################
 
-if __name__ == '__main__':
-  print(MainCommand())
+# if __name__ == '__main__':
+#   print(MainCommand())
