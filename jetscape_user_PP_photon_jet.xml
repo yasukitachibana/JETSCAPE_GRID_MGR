@@ -7,17 +7,23 @@
   <outputFilename>test_out</outputFilename>
   <JetScapeWriterFinalStateHadronsAscii> on </JetScapeWriterFinalStateHadronsAscii>
   <JetScapeWriterFinalStatePartonsAscii> on </JetScapeWriterFinalStatePartonsAscii>
+  <JetScapeWriterAscii>on</JetScapeWriterAscii>
+  <vlevel> 0 </vlevel>
+  <nEvents_printout> 1 </nEvents_printout>
+
+  <Random>
+    <seed>0</seed>
+  </Random>
 
   <!-- Hard Process -->
   <Hard>
     <PythiaGun>
+      <FSR_on>0</FSR_on>
       <pTHatMin>100</pTHatMin>
       <pTHatMax>101</pTHatMax>
       <eCM>5020</eCM>
       <LinesToRead> 
     	HardQCD:all = off 
-      <!-- PartonLevel:MPI = off
-      PartonLevel:ISR = off -->
     	PromptPhoton:all = on            
       </LinesToRead>
     </PythiaGun>
@@ -25,8 +31,12 @@
 
   <!--Eloss Modules -->
   <Eloss>
+
+    <deltaT>0.1</deltaT>
+    <formTime>-0.1</formTime>
+    <maxT>250</maxT>
+
     <Matter>
-      <maxT>20</maxT>
       <Q0> 1.0 </Q0>
       <in_vac> 1 </in_vac>
       <vir_factor> 0.25 </vir_factor>
@@ -42,6 +52,8 @@
     <LinesToRead>
       111:mayDecay = off
     </LinesToRead>
+    <take_recoil>0</take_recoil>
+    <eCMforHadronization>2510</eCMforHadronization>
   </JetHadronization>
 
 </jetscape>
