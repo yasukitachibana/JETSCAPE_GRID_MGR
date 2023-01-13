@@ -49,7 +49,7 @@ class Base:
     parton = con.PartonListname(i_bin,run)  
     print('Check Existence of', hadron, 'and', parton)
     if (not os.path.isfile(hadron)) or (not os.path.isfile(parton)):
-      print('--> Not Found. Rerun.')
+      print('--> Not Found. Run.')
       build_dir = con.BuildDirname(i_bin,run)
       if os.path.isdir(build_dir):
         print('*Delete' , build_dir)
