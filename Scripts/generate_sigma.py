@@ -30,24 +30,24 @@ def GenerateSigmaMain():
     print(command)
 
   ##################
-  if con.Que() == 'test':
-    print('test mode')
-    print('Submission, Main Command')
-    print(master_command)
-    print('-')
-    os.system(master_command)
-    #exit()
-  else:
-    run_info = str(run_start)+'-'+str(run_end)
-    log = con.LogFilename(i_bin,run_info,'Sigma')
-    err = con.ErrorFilename(i_bin,run_info,'Sigma')    
-    job = con.Jobname(i_bin,run_info,'Sigma')    
-    qsub_command = cmd.QsubCommand(master_command, job, log, err)    
-    print('Submission, Que:', con.Que())
-    print(qsub_command)
-    print('-')
-    os.system(qsub_command)
-
+    if con.Que() == 'test':
+      print('test mode')
+      print('Submission, Main Command')
+      print(master_command)
+      print('-')
+      os.system(master_command)
+      #exit()
+    else:
+      run_info = str(run_start)+'-'+str(run_end)
+      log = con.LogFilename(i_bin,run_info,'Sigma')
+      err = con.ErrorFilename(i_bin,run_info,'Sigma')    
+      job = con.Jobname(i_bin,run_info,'Sigma')    
+      qsub_command = cmd.QsubCommand(master_command, job, log, err)    
+      print('Submission, Que:', con.Que())
+      print(qsub_command)
+      print('-')
+      os.system(qsub_command)
+      print( '------------------')
   
   print( '##################')
 
