@@ -71,9 +71,9 @@ def Main(argc,argvs, merge=True):
     print('## ----------------------------------------------')               
     print('## averaged sigma = ' , avr_val_sigma_gen,' +/- ',avr_val_sigma_err)              
     print('## ----------------------------------------------')
-    print('generating: '+mergedfile)               
+    print('generating: '+mergedfile)
     sigma_avr = np.array([avr_val_sigma_gen, avr_val_sigma_err])
-    np.savetxt(mergedfile, sigma_avr)
+    np.savetxt(mergedfile, [sigma_avr])
 
   #---------------------------------------  
 
