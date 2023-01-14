@@ -73,7 +73,7 @@ def Main(argc,argvs, merge=True):
     print('## ----------------------------------------------')
     print('generating: '+mergedfile)               
     sigma_avr = np.array([avr_val_sigma_gen, avr_val_sigma_err]).T
-    np.savetxt(mergedfile, sigma_avr)
+    np.savetxt(mergedfile, [sigma_avr])
 
   #---------------------------------------  
 
