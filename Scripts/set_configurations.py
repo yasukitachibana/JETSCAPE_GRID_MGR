@@ -311,7 +311,7 @@ class SetConfigurations:
   def MergedSigmaFilename(self,i_bin):
     filename = 'SigmaHardBin{}_{}.out'
     filename = filename.format( str(self.__pt_hat_bins[i_bin][0]),str(self.__pt_hat_bins[i_bin][-1]))
-    return os.path.join(self.MergedDirname(), filename)
+    return os.path.join(self.OutputDirname(), filename)
 
 #########################################
   def LogDirname(self):
