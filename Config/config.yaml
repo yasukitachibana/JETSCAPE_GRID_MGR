@@ -9,19 +9,19 @@ RandomRandomSeed: 0
 #############################################
 
 #############################################
-OutputDirPath: "/wsu/tmp/YasukiPromptPhoton"
+OutputDirPath: "/wsu/tmp/YasukiJetscapeEventsPP"
 
-CodePath: "/wsu/home/go/go54/go5410/JETSCAPE_PromptPhoton/JETSCAPE"
+CodePath: "/wsu/home/go/go54/go5410/JETSCAPE_GRID_MGR/JETSCAPE"
 
 #############################################
 OriginalUserXml:
   AA:
-    "config/jetscape_user_PbPb_photon_jet.xml"
-    #'config/jetscape_user_pbpb_sample.xml'
+    #"config/jetscape_user_PbPb_photon_jet.xml"
+    'config/jetscape_user_pbpb_sample.xml'
 
   PP:
-    "config/jetscape_user_PP_photon_jet.xml"
-    #'config/jetscape_user_PP19.xml'
+    #"config/jetscape_user_PP_photon_jet.xml"
+    'config/jetscape_user_PP19.xml'
 
 MasterXml: "config/jetscape_main.xml" #For JETSCAPE 3.5.2
 #############################################
