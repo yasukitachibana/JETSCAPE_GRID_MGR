@@ -11,7 +11,7 @@ RandomRandomSeed: 0
 #############################################
 OutputDirPath: "/wsu/tmp/YasukiJetscapeEventsPP"
 
-CodePath: "/wsu/home/go/go54/go5410/JETSCAPE_GRID_MGR/JETSCAPE"
+CodePath: "/wsu/home/go/go54/go5410/JETSCAPE_STANDARD_EVENT/JETSCAPE"
 
 #############################################
 OriginalUserXml:
