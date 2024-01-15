@@ -69,7 +69,7 @@ def Init(params):
   if params['que'] == 'test':
     yaml_file = '../Config/test.yaml'
   else:
-    yaml_file = '../Config/config.yaml'
+    yaml_file = params['yaml']
   con.InitConfigs(os.getcwd(), yaml_file, params)
 
 def Main(params):
@@ -93,12 +93,12 @@ def GetParams(argc,argvs):
   
   if argvs[1] == 'PP' and argc < 7:
     print('Please Input Options')
-    print('\t$python main_submission.py PP [eCM] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PP [eCM] [PythiaGun/PGun] [bin_start] [bin_end] [quename]  [yaml (optional, default: ../Config/config.yaml)]')
     exit()
 
   if argvs[1] != 'PP' and argc < 11:
     print('Please Input Options')
-    print('\t$python main_submission.py PbPb (or AuAu. etc.) [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PbPb (or AuAu. etc.) [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename] [yaml (optional, default: ../Config/config.yaml)]')
     exit()
 
   print( '##################')
@@ -125,9 +125,16 @@ def GetParams(argc,argvs):
     q_s = argvs[5]
     recoil = int(argvs[6])
 
-  print( 'Hard Process:', argvs[-4])
-  print( 'bin:', argvs[-3], '-', argvs[-2])
-  print( 'que:', argvs[-1])  
+  print( 'Hard Process:', argvs[7])
+  print( 'bin:', argvs[8], '-', argvs[9])
+  print( 'que:', argvs[10])  
+
+  if argc > 11:
+    print( 'yaml:', argvs[11])  
+    print( '------------------')
+    yaml_file = argvs[11]
+  else:
+    yaml_file = '../Config/config.yaml'
   
   hard = argvs[-4]
   i_bin_start = int(argvs[-3])
@@ -147,7 +154,8 @@ def GetParams(argc,argvs):
     'hard': hard,
     'start': i_bin_start,
     'end': i_bin_end,
-    'que': que
+    'que': que,
+    'yaml': yaml_file
   }
   #print(params)
   return params
