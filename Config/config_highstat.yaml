@@ -18,13 +18,13 @@ OriginalUserXml:
   AA:
     #"config/jetscape_user_PbPb_photon_jet.xml"
     # 'config/jetscape_user_pbpb_sample.xml'
-    'jetscape_user_PbPb_no_prompt_photon_jet.xml'
+    'config/jetscape_user_PbPb_no_prompt_photon_jet.xml'
     
 
   PP:
     #"config/jetscape_user_PP_photon_jet.xml"
     #'config/jetscape_user_PP19.xml'
-    'jetscape_user_PP_no_prompt_photon_jet.xml'
+    'config/jetscape_user_PP_no_prompt_photon_jet.xml'
 
 MasterXml: "config/jetscape_main.xml" #For JETSCAPE 3.5.2
 #############################################
