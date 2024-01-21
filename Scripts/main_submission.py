@@ -86,14 +86,14 @@ def GetParams(argc,argvs):
 
   if argc < 2:
     print('Please Input Options')
-    print('\t$python main_submission.py PbPb (or AuAu. etc.) [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PbPb (or AuAu. etc.) [eCM] [centrality (e.g. 0-5)] [alphaS] [Qs] [take_recoil 0 or 1] [PythiaGun/PGun] [bin_start] [bin_end] [quename] [yaml (optional, default: ../Config/config.yaml)]')
     print('Please Input Options')
-    print('\t$python main_submission.py PP [eCM] [PythiaGun/PGun] [bin_start] [bin_end] [quename]')
+    print('\t$python main_submission.py PP [eCM] [PythiaGun/PGun] [bin_start] [bin_end] [quename] [yaml (optional, default: ../Config/config.yaml)]')
     exit()
   
   if argvs[1] == 'PP' and argc < 7:
     print('Please Input Options')
-    print('\t$python main_submission.py PP [eCM] [PythiaGun/PGun] [bin_start] [bin_end] [quename]  [yaml (optional, default: ../Config/config.yaml)]')
+    print('\t$python main_submission.py PP [eCM] [PythiaGun/PGun] [bin_start] [bin_end] [quename] [yaml (optional, default: ../Config/config.yaml)]')
     exit()
 
   if argvs[1] != 'PP' and argc < 11:
@@ -112,6 +112,11 @@ def GetParams(argc,argvs):
   a_s = '0'
   q_s = '0'
   recoil = 0
+  hard = ''
+  i_bin_start = 0
+  i_bin_end = 0
+  que = 'primary'
+
   print( '------------------')
   if argvs[1] != 'PP':
     print( 'centrality:', argvs[3] )
@@ -124,22 +129,35 @@ def GetParams(argc,argvs):
     a_s = argvs[4]
     q_s = argvs[5]
     recoil = int(argvs[6])
+    ########################
+    hard = argvs[7]
+    i_bin_start = int(argvs[8])
+    i_bin_end = int(argvs[9])
+    que = argvs[10]
+    #yaml_file
+    if argc > 11:
+      yaml_file = argvs[11]
+    else:
+      yaml_file = '../Config/config.yaml'
+  #PP
+  else: 
+    hard = argvs[3]
+    i_bin_start = int(argvs[4])
+    i_bin_end = int(argvs[5])
+    que = argvs[6]
+    #yaml_file
+    if argc > 7:
+      yaml_file = argvs[7]
+    else:
+      yaml_file = '../Config/config.yaml'
 
-  print( 'Hard Process:', argvs[7])
-  print( 'bin:', argvs[8], '-', argvs[9])
-  print( 'que:', argvs[10])  
+  print( '------------------')
+  print( 'Hard Process:', hard)
+  print( 'bin:', i_bin_start, '-', i_bin_end)
+  print( 'que:', que)
+  print( 'yaml:', yaml_file)
 
-  if argc > 11:
-    print( 'yaml:', argvs[11])  
-    print( '------------------')
-    yaml_file = argvs[11]
-  else:
-    yaml_file = '../Config/config.yaml'
-  
-  hard = argvs[-4]
-  i_bin_start = int(argvs[-3])
-  i_bin_end = int(argvs[-2])
-  que = argvs[-1]
+
   print( '##################')
   print( '##################')
 
