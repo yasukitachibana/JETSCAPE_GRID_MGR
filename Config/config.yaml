@@ -1,10 +1,10 @@
 #############################################
-nEvents: 4000 #for 2D
+nEvents: 20000 #for 2D
 nReuseHydro: #2000 # for 3D (> nEvents)
   #20 #for 2D
   10 #for 2D 5TeV 0-10
 #############################################
-run: [0, 12]
+run: [0, 10]
 RandomRandomSeed: 0
 #############################################
 
@@ -41,7 +41,7 @@ Notification:
   Email: "yasuki.tachibana@gmail.com"
   Merge: 0
 #############################################
-MergedFileDirPath: "/wsu/tmp/YasukiAAPaper/MATTER_LBT_RunningAlphaS"
+MergedFileDirPath: "/wsu/home/go/go54/go5410/maj-shen/AAPaperData/5020_PP_Colorless_Incl_Parton"
 #############################################
 QueOptions: " --time=200:00:00 -N 1 -n 1 --mem=8G "
 #############################################
