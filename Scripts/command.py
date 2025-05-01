@@ -5,31 +5,42 @@ def Command(i_bin,run):
   con = configs.SetConfigurations()
 
   cd = 'cd ' + con.BuildDirname(i_bin,run)
-  cmake = CmakeCommand(con.CodePath(), con.CmakeOpt())
-  make = MakeCommand(con.MakeOpt())
+  cmake = CmakeCommand(con.CodePath(), con.CmakeOpt(), con.ContainerPath())
+  make = MakeCommand(con.MakeOpt(), con.ContainerPath())
   exec = ExecCommand(i_bin,run)
   hadron = HadronListCommand(i_bin,run)  
   parton = PartonListCommand(i_bin,run)
   cd_rm = 'cd ../ ; rm -r ' + con.BuildDirname(i_bin,run)
   return ' ; '.join([cd,cmake,make,exec,hadron,parton,cd_rm])
 
-def CmakeCommand(code_path, opt):
-    return 'cmake '+opt+' '+code_path
+def ExecContainer(container_path):
+    return 'singularity exec {}'.format(container_path)
 
-def MakeCommand(opt):
-    return 'make '+opt
+def CmakeCommand(code_path, opt, container_path):
+    exec_container_command = ExecContainer(container_path)
+    return '{} cmake {} {}'.format(exec_container_command, opt, code_path)
+    # return 'cmake {} {}'.format(opt, code_path)
+    # return 'cmake '+opt+' '+code_path
+
+def MakeCommand(opt, container_path):
+    exec_container_command = ExecContainer(container_path)  
+    return '{} make {}'.format(exec_container_command, opt)
+    #return 'make {}'.format(opt)
 
 def ExecCommand(i_bin,run):
   con = configs.SetConfigurations()
-  return './'  + con.ExecRunJetscape() + ' ' + con.XmlFilename(i_bin,run) + ' ' + con.MasterXml()
+  exec_container_command = ExecContainer(con.ContainerPath())
+  return exec_container_command + ' ./'  + con.ExecRunJetscape() + ' ' + con.XmlFilename(i_bin,run) + ' ' + con.MasterXml()
 
 def HadronListCommand(i_bin,run):
   con = configs.SetConfigurations()  
-  return './FinalStateHadrons ' + con.OutputFilename(i_bin,run) + ' ' + con.HadronListname(i_bin,run)
+  exec_container_command = ExecContainer(con.ContainerPath())
+  return exec_container_command + ' ./FinalStateHadrons ' + con.OutputFilename(i_bin,run) + ' ' + con.HadronListname(i_bin,run)
 
 def PartonListCommand(i_bin,run):
   con = configs.SetConfigurations()  
-  return './FinalStatePartons '  + con.OutputFilename(i_bin,run) + ' ' + con.PartonListname(i_bin,run)
+  exec_container_command = ExecContainer(con.ContainerPath())
+  return exec_container_command + ' ./FinalStatePartons '  + con.OutputFilename(i_bin,run) + ' ' + con.PartonListname(i_bin,run)
 
 def MergeCommand( que = 'no_que'):
   con = configs.SetConfigurations()
