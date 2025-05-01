@@ -18,6 +18,7 @@ class SetConfigurations:
   __output_dir_path = ''
   __merged_file_dir_path = ''
   __code_path = ''
+  __container_path = ''
   __original_xml = ''
   __master_xml = ''
   __output_dir_name = ''
@@ -96,6 +97,7 @@ class SetConfigurations:
     self.__output_dir_path = self.__yaml_data['OutputDirPath']
     self.__merged_file_dir_path = self.__yaml_data['MergedFileDirPath']
     self.__code_path = self.__yaml_data['CodePath']
+    self.__container_path = self.__yaml_data['ContainerPath']
     self.__original_xml = os.path.join(self.__code_path, self.__yaml_data['OriginalUserXml'][self.__pp_or_AA])
     self.__master_xml = os.path.join(self.__code_path, self.__yaml_data['MasterXml'])
     self.__run_numbers = self.__yaml_data['run']
@@ -133,6 +135,9 @@ class SetConfigurations:
 ########################################################################
   def CodePath(self):
     return self.__code_path
+
+  def ContainerPath(self):
+    return self.__container_path
 
   def OriginalXml(self):
     return self.__original_xml
