@@ -1,10 +1,10 @@
 #############################################
-nEvents: 20000 #for 2D
+nEvents: 4000 #for 2D
 nReuseHydro: #2000 # for 3D (> nEvents)
-  #20 #for 2D
-  10 #for 2D 5TeV 0-10
+  20 #for 2D
+  # 10 #for 2D 5TeV 0-10
 #############################################
-run: [0, 10]
+run: [0, 12]
 RandomRandomSeed: 0
 #############################################
 
@@ -12,6 +12,8 @@ RandomRandomSeed: 0
 OutputDirPath: "/wsu/tmp/YasukiJetscapeEventsPP"
 
 CodePath: "/wsu/home/go/go54/go5410/JETSCAPE_STANDARD_EVENT/JETSCAPE"
+
+ContainerPath: "/wsu/home/go/go54/go5410/jetbox.sif"
 
 #############################################
 OriginalUserXml:
