@@ -20,7 +20,11 @@ singularity shell /path/to/my/jetbox.sif
 ```
 or execution with the container
 ```bash
-singularity exec /path/to/my/jetbox.sif 
+singularity exec /path/to/my/jetbox.sif command
+```
+Bind directories
+```bash
+export APPTAINER_BIND="/wsu, /.rs"
 ```
 
 
