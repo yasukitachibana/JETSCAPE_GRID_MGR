@@ -29,7 +29,7 @@ MasterXml: "config/jetscape_main.xml" #For JETSCAPE 3.5.2
 #############################################
 HydroType:
   #[["hydro_type", 4], ["boost_invariant_", 0]] #for 3D
-  {} #for 2D
+  [] #for 2D
 
 HydroFilePath:
   5020:
