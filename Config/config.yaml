@@ -33,17 +33,17 @@ HydroType:
 
 HydroFilePath:
   5020:
-    #'/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/3DHydro_5TeV_{}' #3D
-    "/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/5020GeV_{}" #2D
-  2760: "/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/2760GeV-{}"
-  200: "/wsu/home/groups/maj-shen/JETSCAPEDataFile/HydroProfiles/200GeV_{}"
+    #'/.rs/volumes/rs_grp_majshen/rs_vol_majshen/4b596bdf-783d-4cb4-b08f-cfd87da578f4/tier1/JETSCAPEDataFile/HydroProfiles/3DHydro_5TeV_{}' #3D
+    "/.rs/volumes/rs_grp_majshen/rs_vol_majshen/4b596bdf-783d-4cb4-b08f-cfd87da578f4/tier1/JETSCAPEDataFile/HydroProfiles/5020GeV_{}" #2D
+  2760: "/.rs/volumes/rs_grp_majshen/rs_vol_majshen/4b596bdf-783d-4cb4-b08f-cfd87da578f4/tier1/JETSCAPEDataFile/HydroProfiles/2760GeV-{}"
+  200: "/.rs/volumes/rs_grp_majshen/rs_vol_majshen/4b596bdf-783d-4cb4-b08f-cfd87da578f4/tier1/JETSCAPEDataFile/HydroProfiles/200GeV_{}"
 #############################################
 Notification:
   OnOff: 1
   Email: "yasuki.tachibana@gmail.com"
   Merge: 0
 #############################################
-MergedFileDirPath: "/wsu/home/go/go54/go5410/maj-shen/AAPaperData/5020_PP_Colorless_Incl_Parton"
+MergedFileDirPath: "/.rs/volumes/rs_grp_majshen/rs_vol_majshen/4b596bdf-783d-4cb4-b08f-cfd87da578f4/tier1/AAPaperData/5020_PP_Colorless_Incl_Parton"
 #############################################
 QueOptions: " --time=200:00:00 -N 1 -n 1 --mem=8G "
 #############################################
