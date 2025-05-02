@@ -2,10 +2,11 @@
 
 ## Run JETSCAPE with Singularity on WSU Grid
 
-Load singularity and apptainer:
+Load singularity and apptainer and bind directories:
 ```bash
 module load singularity
 module load apptainer/1.2.2
+export APPTAINER_BIND="/wsu, /.rs"
 ```
 
 Pull the image for JETSCAPE from Docker Hub
@@ -22,10 +23,7 @@ or execution with the container
 ```bash
 singularity exec /path/to/my/jetbox.sif command
 ```
-Bind directories
-```bash
-export APPTAINER_BIND="/wsu, /.rs"
-```
+
 
 
 ## Main Code to Run JETSCAPE on WSU Grid
