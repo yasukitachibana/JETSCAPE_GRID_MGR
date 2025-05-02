@@ -1,10 +1,13 @@
 #############################################
-nEvents: 4000 #for 2D
+nEvents: 1
+  # 4000 #for 2D
 nReuseHydro: #2000 # for 3D (> nEvents)
-  20 #for 2D
+  1 
+  #20 #for 2D
   # 10 #for 2D 5TeV 0-10
 #############################################
-run: [0, 12]
+run: #[0, 12]
+  [0, 1]
 RandomRandomSeed: 0
 #############################################
 
@@ -25,11 +28,12 @@ OriginalUserXml:
     #"config/jetscape_user_PP_photon_jet.xml"
     'config/jetscape_user_PP19.xml'
 
-MasterXml: "config/jetscape_main.xml" #For JETSCAPE 3.5.2
+MasterXml: 'config/jetscape_main.xml' #For JETSCAPE 3.5.2
 #############################################
-HydroType:
+
+HydroType: 
   #[["hydro_type", 4], ["boost_invariant_", 0]] #for 3D
-  [] #for 2D
+  {} #for 2D
 
 HydroFilePath:
   5020:

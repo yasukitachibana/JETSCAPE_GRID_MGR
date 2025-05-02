@@ -64,6 +64,7 @@ class SetConfigurations:
     print('Config File: ', config_file)
     with open(config_file, 'r') as ymlf:
       self.__yaml_data = yaml.safe_load(ymlf)
+    print('YAML Data: ', self.__yaml_data)
     self.SetParameters(params)
     self.SetOutdirname()
 
