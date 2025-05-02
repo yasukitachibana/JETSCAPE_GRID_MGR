@@ -74,7 +74,7 @@ def SetXmlMatter(i_bin,run,q0):
     ex.DeleteElement('./Eloss/AdSCFT')    
   ###################################
   ex.EditParams('./Eloss/Matter/name', 'Matter')   
-  ex.EditParams('./Eloss/Matter/useHybridHad', 0)  
+  # ex.EditParams('./Eloss/Matter/useHybridHad', 0)  
   ex.EditParams('./Eloss/Matter/matter_on', 1)    
   ex.EditParams('./Eloss/Matter/Q0', q0)
   ex.EditParams('./Eloss/Matter/T0', con.TempF())  
@@ -200,7 +200,7 @@ def SetXmlPythiaGun(i_bin,run,i_tag=0):
   ex.EditParams('./Hard/PythiaGun/eCM', con.Ecm())  
   ex.EditParams('./Hard/PythiaGun/pTHatMin', con.PtHatBin()[i_bin][0])
   ex.EditParams('./Hard/PythiaGun/pTHatMax', con.PtHatBin()[i_bin][1])  
-  ex.EditParams('./Hard/PythiaGun/useHybridHad', 0)
+  # ex.EditParams('./Hard/PythiaGun/useHybridHad', 0)
   ex.EditParams('./Hard/PythiaGun/FSR_on', 0)
 
 def SetXmlPGun(i_bin,run,i_tag):
@@ -215,7 +215,7 @@ def SetXmlPGun(i_bin,run,i_tag):
   elif con.Tags()[i_tag] == 'gluon':
     parID = 21
   ex.EditParams('./Hard/PGun/parID', parID)
-  ex.EditParams('./Hard/PGun/useHybridHad', 0)
+  # ex.EditParams('./Hard/PGun/useHybridHad', 0)
 #######################################################
 
 

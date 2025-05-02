@@ -40,7 +40,7 @@
       	PDF:nPDFBeamA = 100822080
       	PDF:nPDFBeamB = 100822080
       </LinesToRead> -->
-      <useHybridHad>0</useHybridHad>
+      <!-- <useHybridHad>0</useHybridHad> -->
     </PythiaGun>
   </Hard>
   
@@ -69,7 +69,7 @@
 
     <Matter>
       <name>Matter</name>
-      <useHybridHad>0</useHybridHad>
+      <!-- <useHybridHad>0</useHybridHad> -->
       <matter_on> 1 </matter_on>
       <Q0> 2.0 </Q0>
       <T0> 0.16 </T0>
