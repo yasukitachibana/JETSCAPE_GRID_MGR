@@ -12,7 +12,7 @@ export APPTAINER_BIND="/wsu, /.rs"
 Pull the image for JETSCAPE from Docker Hub
 
 ```bash
-singularity pull jetbox.sif docker://jetscape/base:stable
+apptainer pull jetbox.sif docker://jetscape/base:stable
 ```
 
 Test. Shell into the container
